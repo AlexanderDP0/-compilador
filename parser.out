@@ -1,0 +1,3469 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CASE
+    END
+    SWITCH
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> MAIN LBRACE listaDeclaracion RBRACE
+Rule 2     listaDeclaracion -> listaDeclaracion declaracion
+Rule 3     listaDeclaracion -> declaracion
+Rule 4     declaracion -> declaracionVariable
+Rule 5     declaracion -> listaSentencias
+Rule 6     declaracionVariable -> tipo listaIdentificadores SEMICOLON
+Rule 7     declaracionVariable -> tipo ID EQUAL expresion SEMICOLON
+Rule 8     listaIdentificadores -> ID
+Rule 9     listaIdentificadores -> ID COMMA listaIdentificadores
+Rule 10    tipo -> INT
+Rule 11    tipo -> INTEGER
+Rule 12    tipo -> FLOAT
+Rule 13    tipo -> CHAR
+Rule 14    tipo -> STRING
+Rule 15    tipo -> BOOLEAN
+Rule 16    tipo -> DOUBLE
+Rule 17    listaSentencias -> listaSentencias sentencia
+Rule 18    listaSentencias -> sentencia
+Rule 19    listaSentencias -> empty
+Rule 20    sentencia -> seleccion
+Rule 21    sentencia -> iteracion
+Rule 22    sentencia -> repeticion
+Rule 23    sentencia -> andor
+Rule 24    sentencia -> elseif
+Rule 25    sentencia -> sentIn
+Rule 26    sentencia -> sentOut
+Rule 27    sentencia -> asignacion
+Rule 28    sentencia -> incremento
+Rule 29    asignacion -> ID EQUAL sentExpresion
+Rule 30    asignacion -> ID DEQUAL sentExpresion
+Rule 31    incremento -> ID PLUSPLUS SEMICOLON
+Rule 32    incremento -> ID MINUSMINUS SEMICOLON
+Rule 33    sentExpresion -> expresion SEMICOLON
+Rule 34    sentExpresion -> incremento SEMICOLON
+Rule 35    sentExpresion -> SEMICOLON
+Rule 36    seleccion -> IF expresion LBRACE listaSentencias RBRACE
+Rule 37    seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif
+Rule 38    seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+Rule 39    seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+Rule 40    elseif -> ELSE LBRACE listaSentencias RBRACE
+Rule 41    andor -> expresion AND expresion
+Rule 42    andor -> expresion OR expresion
+Rule 43    iteracion -> WHILE expresion
+Rule 44    iteracion -> WHILE expresion LBRACE listaSentencias RBRACE
+Rule 45    repeticion -> DO LBRACE listaSentencias RBRACE iteracion
+Rule 46    sentIn -> CIN ID SEMICOLON
+Rule 47    sentOut -> COUT expresion SEMICOLON
+Rule 48    expresion -> expresionSimple
+Rule 49    expresion -> expresionSimple relacionOp expresionSimple
+Rule 50    relacionOp -> LESS
+Rule 51    relacionOp -> LESSEQUAL
+Rule 52    relacionOp -> GREATER
+Rule 53    relacionOp -> GREATEREQUAL
+Rule 54    relacionOp -> DEQUAL
+Rule 55    relacionOp -> NEQUAL
+Rule 56    expresionSimple -> expresionSimple sumaOp termino
+Rule 57    expresionSimple -> termino
+Rule 58    sumaOp -> PLUS
+Rule 59    sumaOp -> MINUS
+Rule 60    termino -> termino mulOp factor
+Rule 61    termino -> factor
+Rule 62    mulOp -> TIMES
+Rule 63    mulOp -> DIVIDE
+Rule 64    mulOp -> MOD
+Rule 65    factor -> factor POWER primario
+Rule 66    factor -> primario
+Rule 67    primario -> LPAREN expresion RPAREN
+Rule 68    primario -> ID
+Rule 69    primario -> NUMBER
+Rule 70    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 41
+BOOLEAN              : 15
+CASE                 : 
+CHAR                 : 13
+CIN                  : 46
+COMMA                : 9
+COUT                 : 47
+DEQUAL               : 30 54
+DIVIDE               : 63
+DO                   : 45
+DOUBLE               : 16
+ELSE                 : 40
+END                  : 
+EQUAL                : 7 29
+FLOAT                : 12
+GREATER              : 52
+GREATEREQUAL         : 53
+ID                   : 7 8 9 29 30 31 32 46 68
+IF                   : 36 37 38 39
+INT                  : 10
+INTEGER              : 11
+LBRACE               : 1 36 37 38 39 40 44 45
+LESS                 : 50
+LESSEQUAL            : 51
+LPAREN               : 38 39 67
+MAIN                 : 1
+MINUS                : 59
+MINUSMINUS           : 32
+MOD                  : 64
+NEQUAL               : 55
+NUMBER               : 69
+OR                   : 42
+PLUS                 : 58
+PLUSPLUS             : 31
+POWER                : 65
+RBRACE               : 1 36 37 38 39 40 44 45
+RPAREN               : 38 39 67
+SEMICOLON            : 6 7 31 32 33 34 35 46 47
+STRING               : 14
+SWITCH               : 
+TIMES                : 62
+WHILE                : 43 44
+error                : 
+
+Nonterminals, with rules where they appear
+
+andor                : 23 38 39
+asignacion           : 27
+declaracion          : 2 3
+declaracionVariable  : 4
+elseif               : 24 37 39
+empty                : 19
+expresion            : 7 33 36 37 41 41 42 42 43 44 47 67
+expresionSimple      : 48 49 49 56
+factor               : 60 61 65
+incremento           : 28 34
+iteracion            : 21 45
+listaDeclaracion     : 1 2
+listaIdentificadores : 6 9
+listaSentencias      : 5 17 36 37 38 39 40 44 45
+mulOp                : 60
+primario             : 65 66
+programa             : 0
+relacionOp           : 49
+repeticion           : 22
+seleccion            : 20
+sentExpresion        : 29 30
+sentIn               : 25
+sentOut              : 26
+sentencia            : 17 18
+sumaOp               : 56
+termino              : 56 57 60
+tipo                 : 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . MAIN LBRACE listaDeclaracion RBRACE
+
+    MAIN            shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> MAIN . LBRACE listaDeclaracion RBRACE
+
+    LBRACE          shift and go to state 3
+
+
+state 3
+
+    (1) programa -> MAIN LBRACE . listaDeclaracion RBRACE
+    (2) listaDeclaracion -> . listaDeclaracion declaracion
+    (3) listaDeclaracion -> . declaracion
+    (4) declaracion -> . declaracionVariable
+    (5) declaracion -> . listaSentencias
+    (6) declaracionVariable -> . tipo listaIdentificadores SEMICOLON
+    (7) declaracionVariable -> . tipo ID EQUAL expresion SEMICOLON
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (10) tipo -> . INT
+    (11) tipo -> . INTEGER
+    (12) tipo -> . FLOAT
+    (13) tipo -> . CHAR
+    (14) tipo -> . STRING
+    (15) tipo -> . BOOLEAN
+    (16) tipo -> . DOUBLE
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for INTEGER resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for CHAR resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for BOOLEAN resolved as shift
+  ! shift/reduce conflict for DOUBLE resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    INT             shift and go to state 13
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    CHAR            shift and go to state 16
+    STRING          shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    DOUBLE          shift and go to state 19
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+  ! INT             [ reduce using rule 70 (empty -> .) ]
+  ! INTEGER         [ reduce using rule 70 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 70 (empty -> .) ]
+  ! CHAR            [ reduce using rule 70 (empty -> .) ]
+  ! STRING          [ reduce using rule 70 (empty -> .) ]
+  ! BOOLEAN         [ reduce using rule 70 (empty -> .) ]
+  ! DOUBLE          [ reduce using rule 70 (empty -> .) ]
+
+    listaDeclaracion               shift and go to state 4
+    declaracion                    shift and go to state 5
+    declaracionVariable            shift and go to state 6
+    listaSentencias                shift and go to state 7
+    tipo                           shift and go to state 8
+    expresion                      shift and go to state 10
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 4
+
+    (1) programa -> MAIN LBRACE listaDeclaracion . RBRACE
+    (2) listaDeclaracion -> listaDeclaracion . declaracion
+    (4) declaracion -> . declaracionVariable
+    (5) declaracion -> . listaSentencias
+    (6) declaracionVariable -> . tipo listaIdentificadores SEMICOLON
+    (7) declaracionVariable -> . tipo ID EQUAL expresion SEMICOLON
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (10) tipo -> . INT
+    (11) tipo -> . INTEGER
+    (12) tipo -> . FLOAT
+    (13) tipo -> . CHAR
+    (14) tipo -> . STRING
+    (15) tipo -> . BOOLEAN
+    (16) tipo -> . DOUBLE
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for RBRACE resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for INTEGER resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for CHAR resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for BOOLEAN resolved as shift
+  ! shift/reduce conflict for DOUBLE resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          shift and go to state 41
+    INT             shift and go to state 13
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    CHAR            shift and go to state 16
+    STRING          shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    DOUBLE          shift and go to state 19
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+  ! RBRACE          [ reduce using rule 70 (empty -> .) ]
+  ! INT             [ reduce using rule 70 (empty -> .) ]
+  ! INTEGER         [ reduce using rule 70 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 70 (empty -> .) ]
+  ! CHAR            [ reduce using rule 70 (empty -> .) ]
+  ! STRING          [ reduce using rule 70 (empty -> .) ]
+  ! BOOLEAN         [ reduce using rule 70 (empty -> .) ]
+  ! DOUBLE          [ reduce using rule 70 (empty -> .) ]
+
+    declaracion                    shift and go to state 42
+    declaracionVariable            shift and go to state 6
+    listaSentencias                shift and go to state 7
+    tipo                           shift and go to state 8
+    expresion                      shift and go to state 10
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 5
+
+    (3) listaDeclaracion -> declaracion .
+
+    RBRACE          reduce using rule 3 (listaDeclaracion -> declaracion .)
+    INT             reduce using rule 3 (listaDeclaracion -> declaracion .)
+    INTEGER         reduce using rule 3 (listaDeclaracion -> declaracion .)
+    FLOAT           reduce using rule 3 (listaDeclaracion -> declaracion .)
+    CHAR            reduce using rule 3 (listaDeclaracion -> declaracion .)
+    STRING          reduce using rule 3 (listaDeclaracion -> declaracion .)
+    BOOLEAN         reduce using rule 3 (listaDeclaracion -> declaracion .)
+    DOUBLE          reduce using rule 3 (listaDeclaracion -> declaracion .)
+    IF              reduce using rule 3 (listaDeclaracion -> declaracion .)
+    WHILE           reduce using rule 3 (listaDeclaracion -> declaracion .)
+    DO              reduce using rule 3 (listaDeclaracion -> declaracion .)
+    ELSE            reduce using rule 3 (listaDeclaracion -> declaracion .)
+    CIN             reduce using rule 3 (listaDeclaracion -> declaracion .)
+    COUT            reduce using rule 3 (listaDeclaracion -> declaracion .)
+    ID              reduce using rule 3 (listaDeclaracion -> declaracion .)
+    LPAREN          reduce using rule 3 (listaDeclaracion -> declaracion .)
+    NUMBER          reduce using rule 3 (listaDeclaracion -> declaracion .)
+
+
+state 6
+
+    (4) declaracion -> declaracionVariable .
+
+    RBRACE          reduce using rule 4 (declaracion -> declaracionVariable .)
+    INT             reduce using rule 4 (declaracion -> declaracionVariable .)
+    INTEGER         reduce using rule 4 (declaracion -> declaracionVariable .)
+    FLOAT           reduce using rule 4 (declaracion -> declaracionVariable .)
+    CHAR            reduce using rule 4 (declaracion -> declaracionVariable .)
+    STRING          reduce using rule 4 (declaracion -> declaracionVariable .)
+    BOOLEAN         reduce using rule 4 (declaracion -> declaracionVariable .)
+    DOUBLE          reduce using rule 4 (declaracion -> declaracionVariable .)
+    IF              reduce using rule 4 (declaracion -> declaracionVariable .)
+    WHILE           reduce using rule 4 (declaracion -> declaracionVariable .)
+    DO              reduce using rule 4 (declaracion -> declaracionVariable .)
+    ELSE            reduce using rule 4 (declaracion -> declaracionVariable .)
+    CIN             reduce using rule 4 (declaracion -> declaracionVariable .)
+    COUT            reduce using rule 4 (declaracion -> declaracionVariable .)
+    ID              reduce using rule 4 (declaracion -> declaracionVariable .)
+    LPAREN          reduce using rule 4 (declaracion -> declaracionVariable .)
+    NUMBER          reduce using rule 4 (declaracion -> declaracionVariable .)
+
+
+state 7
+
+    (5) declaracion -> listaSentencias .
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 5 (declaracion -> listaSentencias .)
+    INT             reduce using rule 5 (declaracion -> listaSentencias .)
+    INTEGER         reduce using rule 5 (declaracion -> listaSentencias .)
+    FLOAT           reduce using rule 5 (declaracion -> listaSentencias .)
+    CHAR            reduce using rule 5 (declaracion -> listaSentencias .)
+    STRING          reduce using rule 5 (declaracion -> listaSentencias .)
+    BOOLEAN         reduce using rule 5 (declaracion -> listaSentencias .)
+    DOUBLE          reduce using rule 5 (declaracion -> listaSentencias .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! WHILE           [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! DO              [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! ELSE            [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! CIN             [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! COUT            [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! ID              [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! LPAREN          [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+  ! NUMBER          [ reduce using rule 5 (declaracion -> listaSentencias .) ]
+
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 8
+
+    (6) declaracionVariable -> tipo . listaIdentificadores SEMICOLON
+    (7) declaracionVariable -> tipo . ID EQUAL expresion SEMICOLON
+    (8) listaIdentificadores -> . ID
+    (9) listaIdentificadores -> . ID COMMA listaIdentificadores
+
+    ID              shift and go to state 45
+
+    listaIdentificadores           shift and go to state 44
+
+state 9
+
+    (29) asignacion -> ID . EQUAL sentExpresion
+    (30) asignacion -> ID . DEQUAL sentExpresion
+    (31) incremento -> ID . PLUSPLUS SEMICOLON
+    (32) incremento -> ID . MINUSMINUS SEMICOLON
+    (68) primario -> ID .
+
+  ! shift/reduce conflict for DEQUAL resolved as shift
+    EQUAL           shift and go to state 46
+    DEQUAL          shift and go to state 47
+    PLUSPLUS        shift and go to state 48
+    MINUSMINUS      shift and go to state 49
+    POWER           reduce using rule 68 (primario -> ID .)
+    TIMES           reduce using rule 68 (primario -> ID .)
+    DIVIDE          reduce using rule 68 (primario -> ID .)
+    MOD             reduce using rule 68 (primario -> ID .)
+    LESS            reduce using rule 68 (primario -> ID .)
+    LESSEQUAL       reduce using rule 68 (primario -> ID .)
+    GREATER         reduce using rule 68 (primario -> ID .)
+    GREATEREQUAL    reduce using rule 68 (primario -> ID .)
+    NEQUAL          reduce using rule 68 (primario -> ID .)
+    PLUS            reduce using rule 68 (primario -> ID .)
+    MINUS           reduce using rule 68 (primario -> ID .)
+    AND             reduce using rule 68 (primario -> ID .)
+    OR              reduce using rule 68 (primario -> ID .)
+
+  ! DEQUAL          [ reduce using rule 68 (primario -> ID .) ]
+
+
+state 10
+
+    (41) andor -> expresion . AND expresion
+    (42) andor -> expresion . OR expresion
+
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+
+
+state 11
+
+    (18) listaSentencias -> sentencia .
+
+    IF              reduce using rule 18 (listaSentencias -> sentencia .)
+    WHILE           reduce using rule 18 (listaSentencias -> sentencia .)
+    DO              reduce using rule 18 (listaSentencias -> sentencia .)
+    ELSE            reduce using rule 18 (listaSentencias -> sentencia .)
+    CIN             reduce using rule 18 (listaSentencias -> sentencia .)
+    COUT            reduce using rule 18 (listaSentencias -> sentencia .)
+    ID              reduce using rule 18 (listaSentencias -> sentencia .)
+    LPAREN          reduce using rule 18 (listaSentencias -> sentencia .)
+    NUMBER          reduce using rule 18 (listaSentencias -> sentencia .)
+    RBRACE          reduce using rule 18 (listaSentencias -> sentencia .)
+    INT             reduce using rule 18 (listaSentencias -> sentencia .)
+    INTEGER         reduce using rule 18 (listaSentencias -> sentencia .)
+    FLOAT           reduce using rule 18 (listaSentencias -> sentencia .)
+    CHAR            reduce using rule 18 (listaSentencias -> sentencia .)
+    STRING          reduce using rule 18 (listaSentencias -> sentencia .)
+    BOOLEAN         reduce using rule 18 (listaSentencias -> sentencia .)
+    DOUBLE          reduce using rule 18 (listaSentencias -> sentencia .)
+
+
+state 12
+
+    (19) listaSentencias -> empty .
+
+    IF              reduce using rule 19 (listaSentencias -> empty .)
+    WHILE           reduce using rule 19 (listaSentencias -> empty .)
+    DO              reduce using rule 19 (listaSentencias -> empty .)
+    ELSE            reduce using rule 19 (listaSentencias -> empty .)
+    CIN             reduce using rule 19 (listaSentencias -> empty .)
+    COUT            reduce using rule 19 (listaSentencias -> empty .)
+    ID              reduce using rule 19 (listaSentencias -> empty .)
+    LPAREN          reduce using rule 19 (listaSentencias -> empty .)
+    NUMBER          reduce using rule 19 (listaSentencias -> empty .)
+    RBRACE          reduce using rule 19 (listaSentencias -> empty .)
+    INT             reduce using rule 19 (listaSentencias -> empty .)
+    INTEGER         reduce using rule 19 (listaSentencias -> empty .)
+    FLOAT           reduce using rule 19 (listaSentencias -> empty .)
+    CHAR            reduce using rule 19 (listaSentencias -> empty .)
+    STRING          reduce using rule 19 (listaSentencias -> empty .)
+    BOOLEAN         reduce using rule 19 (listaSentencias -> empty .)
+    DOUBLE          reduce using rule 19 (listaSentencias -> empty .)
+
+
+state 13
+
+    (10) tipo -> INT .
+
+    ID              reduce using rule 10 (tipo -> INT .)
+
+
+state 14
+
+    (11) tipo -> INTEGER .
+
+    ID              reduce using rule 11 (tipo -> INTEGER .)
+
+
+state 15
+
+    (12) tipo -> FLOAT .
+
+    ID              reduce using rule 12 (tipo -> FLOAT .)
+
+
+state 16
+
+    (13) tipo -> CHAR .
+
+    ID              reduce using rule 13 (tipo -> CHAR .)
+
+
+state 17
+
+    (14) tipo -> STRING .
+
+    ID              reduce using rule 14 (tipo -> STRING .)
+
+
+state 18
+
+    (15) tipo -> BOOLEAN .
+
+    ID              reduce using rule 15 (tipo -> BOOLEAN .)
+
+
+state 19
+
+    (16) tipo -> DOUBLE .
+
+    ID              reduce using rule 16 (tipo -> DOUBLE .)
+
+
+state 20
+
+    (20) sentencia -> seleccion .
+
+    IF              reduce using rule 20 (sentencia -> seleccion .)
+    WHILE           reduce using rule 20 (sentencia -> seleccion .)
+    DO              reduce using rule 20 (sentencia -> seleccion .)
+    ELSE            reduce using rule 20 (sentencia -> seleccion .)
+    CIN             reduce using rule 20 (sentencia -> seleccion .)
+    COUT            reduce using rule 20 (sentencia -> seleccion .)
+    ID              reduce using rule 20 (sentencia -> seleccion .)
+    LPAREN          reduce using rule 20 (sentencia -> seleccion .)
+    NUMBER          reduce using rule 20 (sentencia -> seleccion .)
+    RBRACE          reduce using rule 20 (sentencia -> seleccion .)
+    INT             reduce using rule 20 (sentencia -> seleccion .)
+    INTEGER         reduce using rule 20 (sentencia -> seleccion .)
+    FLOAT           reduce using rule 20 (sentencia -> seleccion .)
+    CHAR            reduce using rule 20 (sentencia -> seleccion .)
+    STRING          reduce using rule 20 (sentencia -> seleccion .)
+    BOOLEAN         reduce using rule 20 (sentencia -> seleccion .)
+    DOUBLE          reduce using rule 20 (sentencia -> seleccion .)
+
+
+state 21
+
+    (21) sentencia -> iteracion .
+
+    IF              reduce using rule 21 (sentencia -> iteracion .)
+    WHILE           reduce using rule 21 (sentencia -> iteracion .)
+    DO              reduce using rule 21 (sentencia -> iteracion .)
+    ELSE            reduce using rule 21 (sentencia -> iteracion .)
+    CIN             reduce using rule 21 (sentencia -> iteracion .)
+    COUT            reduce using rule 21 (sentencia -> iteracion .)
+    ID              reduce using rule 21 (sentencia -> iteracion .)
+    LPAREN          reduce using rule 21 (sentencia -> iteracion .)
+    NUMBER          reduce using rule 21 (sentencia -> iteracion .)
+    RBRACE          reduce using rule 21 (sentencia -> iteracion .)
+    INT             reduce using rule 21 (sentencia -> iteracion .)
+    INTEGER         reduce using rule 21 (sentencia -> iteracion .)
+    FLOAT           reduce using rule 21 (sentencia -> iteracion .)
+    CHAR            reduce using rule 21 (sentencia -> iteracion .)
+    STRING          reduce using rule 21 (sentencia -> iteracion .)
+    BOOLEAN         reduce using rule 21 (sentencia -> iteracion .)
+    DOUBLE          reduce using rule 21 (sentencia -> iteracion .)
+
+
+state 22
+
+    (22) sentencia -> repeticion .
+
+    IF              reduce using rule 22 (sentencia -> repeticion .)
+    WHILE           reduce using rule 22 (sentencia -> repeticion .)
+    DO              reduce using rule 22 (sentencia -> repeticion .)
+    ELSE            reduce using rule 22 (sentencia -> repeticion .)
+    CIN             reduce using rule 22 (sentencia -> repeticion .)
+    COUT            reduce using rule 22 (sentencia -> repeticion .)
+    ID              reduce using rule 22 (sentencia -> repeticion .)
+    LPAREN          reduce using rule 22 (sentencia -> repeticion .)
+    NUMBER          reduce using rule 22 (sentencia -> repeticion .)
+    RBRACE          reduce using rule 22 (sentencia -> repeticion .)
+    INT             reduce using rule 22 (sentencia -> repeticion .)
+    INTEGER         reduce using rule 22 (sentencia -> repeticion .)
+    FLOAT           reduce using rule 22 (sentencia -> repeticion .)
+    CHAR            reduce using rule 22 (sentencia -> repeticion .)
+    STRING          reduce using rule 22 (sentencia -> repeticion .)
+    BOOLEAN         reduce using rule 22 (sentencia -> repeticion .)
+    DOUBLE          reduce using rule 22 (sentencia -> repeticion .)
+
+
+state 23
+
+    (23) sentencia -> andor .
+
+    IF              reduce using rule 23 (sentencia -> andor .)
+    WHILE           reduce using rule 23 (sentencia -> andor .)
+    DO              reduce using rule 23 (sentencia -> andor .)
+    ELSE            reduce using rule 23 (sentencia -> andor .)
+    CIN             reduce using rule 23 (sentencia -> andor .)
+    COUT            reduce using rule 23 (sentencia -> andor .)
+    ID              reduce using rule 23 (sentencia -> andor .)
+    LPAREN          reduce using rule 23 (sentencia -> andor .)
+    NUMBER          reduce using rule 23 (sentencia -> andor .)
+    RBRACE          reduce using rule 23 (sentencia -> andor .)
+    INT             reduce using rule 23 (sentencia -> andor .)
+    INTEGER         reduce using rule 23 (sentencia -> andor .)
+    FLOAT           reduce using rule 23 (sentencia -> andor .)
+    CHAR            reduce using rule 23 (sentencia -> andor .)
+    STRING          reduce using rule 23 (sentencia -> andor .)
+    BOOLEAN         reduce using rule 23 (sentencia -> andor .)
+    DOUBLE          reduce using rule 23 (sentencia -> andor .)
+
+
+state 24
+
+    (24) sentencia -> elseif .
+
+    IF              reduce using rule 24 (sentencia -> elseif .)
+    WHILE           reduce using rule 24 (sentencia -> elseif .)
+    DO              reduce using rule 24 (sentencia -> elseif .)
+    ELSE            reduce using rule 24 (sentencia -> elseif .)
+    CIN             reduce using rule 24 (sentencia -> elseif .)
+    COUT            reduce using rule 24 (sentencia -> elseif .)
+    ID              reduce using rule 24 (sentencia -> elseif .)
+    LPAREN          reduce using rule 24 (sentencia -> elseif .)
+    NUMBER          reduce using rule 24 (sentencia -> elseif .)
+    RBRACE          reduce using rule 24 (sentencia -> elseif .)
+    INT             reduce using rule 24 (sentencia -> elseif .)
+    INTEGER         reduce using rule 24 (sentencia -> elseif .)
+    FLOAT           reduce using rule 24 (sentencia -> elseif .)
+    CHAR            reduce using rule 24 (sentencia -> elseif .)
+    STRING          reduce using rule 24 (sentencia -> elseif .)
+    BOOLEAN         reduce using rule 24 (sentencia -> elseif .)
+    DOUBLE          reduce using rule 24 (sentencia -> elseif .)
+
+
+state 25
+
+    (25) sentencia -> sentIn .
+
+    IF              reduce using rule 25 (sentencia -> sentIn .)
+    WHILE           reduce using rule 25 (sentencia -> sentIn .)
+    DO              reduce using rule 25 (sentencia -> sentIn .)
+    ELSE            reduce using rule 25 (sentencia -> sentIn .)
+    CIN             reduce using rule 25 (sentencia -> sentIn .)
+    COUT            reduce using rule 25 (sentencia -> sentIn .)
+    ID              reduce using rule 25 (sentencia -> sentIn .)
+    LPAREN          reduce using rule 25 (sentencia -> sentIn .)
+    NUMBER          reduce using rule 25 (sentencia -> sentIn .)
+    RBRACE          reduce using rule 25 (sentencia -> sentIn .)
+    INT             reduce using rule 25 (sentencia -> sentIn .)
+    INTEGER         reduce using rule 25 (sentencia -> sentIn .)
+    FLOAT           reduce using rule 25 (sentencia -> sentIn .)
+    CHAR            reduce using rule 25 (sentencia -> sentIn .)
+    STRING          reduce using rule 25 (sentencia -> sentIn .)
+    BOOLEAN         reduce using rule 25 (sentencia -> sentIn .)
+    DOUBLE          reduce using rule 25 (sentencia -> sentIn .)
+
+
+state 26
+
+    (26) sentencia -> sentOut .
+
+    IF              reduce using rule 26 (sentencia -> sentOut .)
+    WHILE           reduce using rule 26 (sentencia -> sentOut .)
+    DO              reduce using rule 26 (sentencia -> sentOut .)
+    ELSE            reduce using rule 26 (sentencia -> sentOut .)
+    CIN             reduce using rule 26 (sentencia -> sentOut .)
+    COUT            reduce using rule 26 (sentencia -> sentOut .)
+    ID              reduce using rule 26 (sentencia -> sentOut .)
+    LPAREN          reduce using rule 26 (sentencia -> sentOut .)
+    NUMBER          reduce using rule 26 (sentencia -> sentOut .)
+    RBRACE          reduce using rule 26 (sentencia -> sentOut .)
+    INT             reduce using rule 26 (sentencia -> sentOut .)
+    INTEGER         reduce using rule 26 (sentencia -> sentOut .)
+    FLOAT           reduce using rule 26 (sentencia -> sentOut .)
+    CHAR            reduce using rule 26 (sentencia -> sentOut .)
+    STRING          reduce using rule 26 (sentencia -> sentOut .)
+    BOOLEAN         reduce using rule 26 (sentencia -> sentOut .)
+    DOUBLE          reduce using rule 26 (sentencia -> sentOut .)
+
+
+state 27
+
+    (27) sentencia -> asignacion .
+
+    IF              reduce using rule 27 (sentencia -> asignacion .)
+    WHILE           reduce using rule 27 (sentencia -> asignacion .)
+    DO              reduce using rule 27 (sentencia -> asignacion .)
+    ELSE            reduce using rule 27 (sentencia -> asignacion .)
+    CIN             reduce using rule 27 (sentencia -> asignacion .)
+    COUT            reduce using rule 27 (sentencia -> asignacion .)
+    ID              reduce using rule 27 (sentencia -> asignacion .)
+    LPAREN          reduce using rule 27 (sentencia -> asignacion .)
+    NUMBER          reduce using rule 27 (sentencia -> asignacion .)
+    RBRACE          reduce using rule 27 (sentencia -> asignacion .)
+    INT             reduce using rule 27 (sentencia -> asignacion .)
+    INTEGER         reduce using rule 27 (sentencia -> asignacion .)
+    FLOAT           reduce using rule 27 (sentencia -> asignacion .)
+    CHAR            reduce using rule 27 (sentencia -> asignacion .)
+    STRING          reduce using rule 27 (sentencia -> asignacion .)
+    BOOLEAN         reduce using rule 27 (sentencia -> asignacion .)
+    DOUBLE          reduce using rule 27 (sentencia -> asignacion .)
+
+
+state 28
+
+    (28) sentencia -> incremento .
+
+    IF              reduce using rule 28 (sentencia -> incremento .)
+    WHILE           reduce using rule 28 (sentencia -> incremento .)
+    DO              reduce using rule 28 (sentencia -> incremento .)
+    ELSE            reduce using rule 28 (sentencia -> incremento .)
+    CIN             reduce using rule 28 (sentencia -> incremento .)
+    COUT            reduce using rule 28 (sentencia -> incremento .)
+    ID              reduce using rule 28 (sentencia -> incremento .)
+    LPAREN          reduce using rule 28 (sentencia -> incremento .)
+    NUMBER          reduce using rule 28 (sentencia -> incremento .)
+    RBRACE          reduce using rule 28 (sentencia -> incremento .)
+    INT             reduce using rule 28 (sentencia -> incremento .)
+    INTEGER         reduce using rule 28 (sentencia -> incremento .)
+    FLOAT           reduce using rule 28 (sentencia -> incremento .)
+    CHAR            reduce using rule 28 (sentencia -> incremento .)
+    STRING          reduce using rule 28 (sentencia -> incremento .)
+    BOOLEAN         reduce using rule 28 (sentencia -> incremento .)
+    DOUBLE          reduce using rule 28 (sentencia -> incremento .)
+
+
+state 29
+
+    (36) seleccion -> IF . expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> IF . expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> IF . LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> IF . LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 52
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 30
+
+    (67) primario -> LPAREN . expresion RPAREN
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 55
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 31
+
+    (43) iteracion -> WHILE . expresion
+    (44) iteracion -> WHILE . expresion LBRACE listaSentencias RBRACE
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 56
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 32
+
+    (45) repeticion -> DO . LBRACE listaSentencias RBRACE iteracion
+
+    LBRACE          shift and go to state 57
+
+
+state 33
+
+    (40) elseif -> ELSE . LBRACE listaSentencias RBRACE
+
+    LBRACE          shift and go to state 58
+
+
+state 34
+
+    (46) sentIn -> CIN . ID SEMICOLON
+
+    ID              shift and go to state 59
+
+
+state 35
+
+    (47) sentOut -> COUT . expresion SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 60
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 36
+
+    (48) expresion -> expresionSimple .
+    (49) expresion -> expresionSimple . relacionOp expresionSimple
+    (56) expresionSimple -> expresionSimple . sumaOp termino
+    (50) relacionOp -> . LESS
+    (51) relacionOp -> . LESSEQUAL
+    (52) relacionOp -> . GREATER
+    (53) relacionOp -> . GREATEREQUAL
+    (54) relacionOp -> . DEQUAL
+    (55) relacionOp -> . NEQUAL
+    (58) sumaOp -> . PLUS
+    (59) sumaOp -> . MINUS
+
+    AND             reduce using rule 48 (expresion -> expresionSimple .)
+    OR              reduce using rule 48 (expresion -> expresionSimple .)
+    LBRACE          reduce using rule 48 (expresion -> expresionSimple .)
+    RPAREN          reduce using rule 48 (expresion -> expresionSimple .)
+    IF              reduce using rule 48 (expresion -> expresionSimple .)
+    WHILE           reduce using rule 48 (expresion -> expresionSimple .)
+    DO              reduce using rule 48 (expresion -> expresionSimple .)
+    ELSE            reduce using rule 48 (expresion -> expresionSimple .)
+    CIN             reduce using rule 48 (expresion -> expresionSimple .)
+    COUT            reduce using rule 48 (expresion -> expresionSimple .)
+    ID              reduce using rule 48 (expresion -> expresionSimple .)
+    LPAREN          reduce using rule 48 (expresion -> expresionSimple .)
+    NUMBER          reduce using rule 48 (expresion -> expresionSimple .)
+    RBRACE          reduce using rule 48 (expresion -> expresionSimple .)
+    INT             reduce using rule 48 (expresion -> expresionSimple .)
+    INTEGER         reduce using rule 48 (expresion -> expresionSimple .)
+    FLOAT           reduce using rule 48 (expresion -> expresionSimple .)
+    CHAR            reduce using rule 48 (expresion -> expresionSimple .)
+    STRING          reduce using rule 48 (expresion -> expresionSimple .)
+    BOOLEAN         reduce using rule 48 (expresion -> expresionSimple .)
+    DOUBLE          reduce using rule 48 (expresion -> expresionSimple .)
+    SEMICOLON       reduce using rule 48 (expresion -> expresionSimple .)
+    LESS            shift and go to state 63
+    LESSEQUAL       shift and go to state 64
+    GREATER         shift and go to state 65
+    GREATEREQUAL    shift and go to state 66
+    DEQUAL          shift and go to state 67
+    NEQUAL          shift and go to state 68
+    PLUS            shift and go to state 69
+    MINUS           shift and go to state 70
+
+    relacionOp                     shift and go to state 61
+    sumaOp                         shift and go to state 62
+
+state 37
+
+    (57) expresionSimple -> termino .
+    (60) termino -> termino . mulOp factor
+    (62) mulOp -> . TIMES
+    (63) mulOp -> . DIVIDE
+    (64) mulOp -> . MOD
+
+    LESS            reduce using rule 57 (expresionSimple -> termino .)
+    LESSEQUAL       reduce using rule 57 (expresionSimple -> termino .)
+    GREATER         reduce using rule 57 (expresionSimple -> termino .)
+    GREATEREQUAL    reduce using rule 57 (expresionSimple -> termino .)
+    DEQUAL          reduce using rule 57 (expresionSimple -> termino .)
+    NEQUAL          reduce using rule 57 (expresionSimple -> termino .)
+    PLUS            reduce using rule 57 (expresionSimple -> termino .)
+    MINUS           reduce using rule 57 (expresionSimple -> termino .)
+    AND             reduce using rule 57 (expresionSimple -> termino .)
+    OR              reduce using rule 57 (expresionSimple -> termino .)
+    LBRACE          reduce using rule 57 (expresionSimple -> termino .)
+    RPAREN          reduce using rule 57 (expresionSimple -> termino .)
+    IF              reduce using rule 57 (expresionSimple -> termino .)
+    WHILE           reduce using rule 57 (expresionSimple -> termino .)
+    DO              reduce using rule 57 (expresionSimple -> termino .)
+    ELSE            reduce using rule 57 (expresionSimple -> termino .)
+    CIN             reduce using rule 57 (expresionSimple -> termino .)
+    COUT            reduce using rule 57 (expresionSimple -> termino .)
+    ID              reduce using rule 57 (expresionSimple -> termino .)
+    LPAREN          reduce using rule 57 (expresionSimple -> termino .)
+    NUMBER          reduce using rule 57 (expresionSimple -> termino .)
+    RBRACE          reduce using rule 57 (expresionSimple -> termino .)
+    INT             reduce using rule 57 (expresionSimple -> termino .)
+    INTEGER         reduce using rule 57 (expresionSimple -> termino .)
+    FLOAT           reduce using rule 57 (expresionSimple -> termino .)
+    CHAR            reduce using rule 57 (expresionSimple -> termino .)
+    STRING          reduce using rule 57 (expresionSimple -> termino .)
+    BOOLEAN         reduce using rule 57 (expresionSimple -> termino .)
+    DOUBLE          reduce using rule 57 (expresionSimple -> termino .)
+    SEMICOLON       reduce using rule 57 (expresionSimple -> termino .)
+    TIMES           shift and go to state 72
+    DIVIDE          shift and go to state 73
+    MOD             shift and go to state 74
+
+    mulOp                          shift and go to state 71
+
+state 38
+
+    (61) termino -> factor .
+    (65) factor -> factor . POWER primario
+
+    TIMES           reduce using rule 61 (termino -> factor .)
+    DIVIDE          reduce using rule 61 (termino -> factor .)
+    MOD             reduce using rule 61 (termino -> factor .)
+    LESS            reduce using rule 61 (termino -> factor .)
+    LESSEQUAL       reduce using rule 61 (termino -> factor .)
+    GREATER         reduce using rule 61 (termino -> factor .)
+    GREATEREQUAL    reduce using rule 61 (termino -> factor .)
+    DEQUAL          reduce using rule 61 (termino -> factor .)
+    NEQUAL          reduce using rule 61 (termino -> factor .)
+    PLUS            reduce using rule 61 (termino -> factor .)
+    MINUS           reduce using rule 61 (termino -> factor .)
+    AND             reduce using rule 61 (termino -> factor .)
+    OR              reduce using rule 61 (termino -> factor .)
+    LBRACE          reduce using rule 61 (termino -> factor .)
+    RPAREN          reduce using rule 61 (termino -> factor .)
+    IF              reduce using rule 61 (termino -> factor .)
+    WHILE           reduce using rule 61 (termino -> factor .)
+    DO              reduce using rule 61 (termino -> factor .)
+    ELSE            reduce using rule 61 (termino -> factor .)
+    CIN             reduce using rule 61 (termino -> factor .)
+    COUT            reduce using rule 61 (termino -> factor .)
+    ID              reduce using rule 61 (termino -> factor .)
+    LPAREN          reduce using rule 61 (termino -> factor .)
+    NUMBER          reduce using rule 61 (termino -> factor .)
+    RBRACE          reduce using rule 61 (termino -> factor .)
+    INT             reduce using rule 61 (termino -> factor .)
+    INTEGER         reduce using rule 61 (termino -> factor .)
+    FLOAT           reduce using rule 61 (termino -> factor .)
+    CHAR            reduce using rule 61 (termino -> factor .)
+    STRING          reduce using rule 61 (termino -> factor .)
+    BOOLEAN         reduce using rule 61 (termino -> factor .)
+    DOUBLE          reduce using rule 61 (termino -> factor .)
+    SEMICOLON       reduce using rule 61 (termino -> factor .)
+    POWER           shift and go to state 75
+
+
+state 39
+
+    (66) factor -> primario .
+
+    POWER           reduce using rule 66 (factor -> primario .)
+    TIMES           reduce using rule 66 (factor -> primario .)
+    DIVIDE          reduce using rule 66 (factor -> primario .)
+    MOD             reduce using rule 66 (factor -> primario .)
+    LESS            reduce using rule 66 (factor -> primario .)
+    LESSEQUAL       reduce using rule 66 (factor -> primario .)
+    GREATER         reduce using rule 66 (factor -> primario .)
+    GREATEREQUAL    reduce using rule 66 (factor -> primario .)
+    DEQUAL          reduce using rule 66 (factor -> primario .)
+    NEQUAL          reduce using rule 66 (factor -> primario .)
+    PLUS            reduce using rule 66 (factor -> primario .)
+    MINUS           reduce using rule 66 (factor -> primario .)
+    AND             reduce using rule 66 (factor -> primario .)
+    OR              reduce using rule 66 (factor -> primario .)
+    LBRACE          reduce using rule 66 (factor -> primario .)
+    RPAREN          reduce using rule 66 (factor -> primario .)
+    IF              reduce using rule 66 (factor -> primario .)
+    WHILE           reduce using rule 66 (factor -> primario .)
+    DO              reduce using rule 66 (factor -> primario .)
+    ELSE            reduce using rule 66 (factor -> primario .)
+    CIN             reduce using rule 66 (factor -> primario .)
+    COUT            reduce using rule 66 (factor -> primario .)
+    ID              reduce using rule 66 (factor -> primario .)
+    LPAREN          reduce using rule 66 (factor -> primario .)
+    NUMBER          reduce using rule 66 (factor -> primario .)
+    RBRACE          reduce using rule 66 (factor -> primario .)
+    INT             reduce using rule 66 (factor -> primario .)
+    INTEGER         reduce using rule 66 (factor -> primario .)
+    FLOAT           reduce using rule 66 (factor -> primario .)
+    CHAR            reduce using rule 66 (factor -> primario .)
+    STRING          reduce using rule 66 (factor -> primario .)
+    BOOLEAN         reduce using rule 66 (factor -> primario .)
+    DOUBLE          reduce using rule 66 (factor -> primario .)
+    SEMICOLON       reduce using rule 66 (factor -> primario .)
+
+
+state 40
+
+    (69) primario -> NUMBER .
+
+    POWER           reduce using rule 69 (primario -> NUMBER .)
+    TIMES           reduce using rule 69 (primario -> NUMBER .)
+    DIVIDE          reduce using rule 69 (primario -> NUMBER .)
+    MOD             reduce using rule 69 (primario -> NUMBER .)
+    LESS            reduce using rule 69 (primario -> NUMBER .)
+    LESSEQUAL       reduce using rule 69 (primario -> NUMBER .)
+    GREATER         reduce using rule 69 (primario -> NUMBER .)
+    GREATEREQUAL    reduce using rule 69 (primario -> NUMBER .)
+    DEQUAL          reduce using rule 69 (primario -> NUMBER .)
+    NEQUAL          reduce using rule 69 (primario -> NUMBER .)
+    PLUS            reduce using rule 69 (primario -> NUMBER .)
+    MINUS           reduce using rule 69 (primario -> NUMBER .)
+    AND             reduce using rule 69 (primario -> NUMBER .)
+    OR              reduce using rule 69 (primario -> NUMBER .)
+    LBRACE          reduce using rule 69 (primario -> NUMBER .)
+    RPAREN          reduce using rule 69 (primario -> NUMBER .)
+    IF              reduce using rule 69 (primario -> NUMBER .)
+    WHILE           reduce using rule 69 (primario -> NUMBER .)
+    DO              reduce using rule 69 (primario -> NUMBER .)
+    ELSE            reduce using rule 69 (primario -> NUMBER .)
+    CIN             reduce using rule 69 (primario -> NUMBER .)
+    COUT            reduce using rule 69 (primario -> NUMBER .)
+    ID              reduce using rule 69 (primario -> NUMBER .)
+    LPAREN          reduce using rule 69 (primario -> NUMBER .)
+    NUMBER          reduce using rule 69 (primario -> NUMBER .)
+    RBRACE          reduce using rule 69 (primario -> NUMBER .)
+    INT             reduce using rule 69 (primario -> NUMBER .)
+    INTEGER         reduce using rule 69 (primario -> NUMBER .)
+    FLOAT           reduce using rule 69 (primario -> NUMBER .)
+    CHAR            reduce using rule 69 (primario -> NUMBER .)
+    STRING          reduce using rule 69 (primario -> NUMBER .)
+    BOOLEAN         reduce using rule 69 (primario -> NUMBER .)
+    DOUBLE          reduce using rule 69 (primario -> NUMBER .)
+    SEMICOLON       reduce using rule 69 (primario -> NUMBER .)
+
+
+state 41
+
+    (1) programa -> MAIN LBRACE listaDeclaracion RBRACE .
+
+    $end            reduce using rule 1 (programa -> MAIN LBRACE listaDeclaracion RBRACE .)
+
+
+state 42
+
+    (2) listaDeclaracion -> listaDeclaracion declaracion .
+
+    RBRACE          reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    INT             reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    INTEGER         reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    FLOAT           reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    CHAR            reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    STRING          reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    BOOLEAN         reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    DOUBLE          reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    IF              reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    WHILE           reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    DO              reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    ELSE            reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    CIN             reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    COUT            reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    ID              reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    LPAREN          reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+    NUMBER          reduce using rule 2 (listaDeclaracion -> listaDeclaracion declaracion .)
+
+
+state 43
+
+    (17) listaSentencias -> listaSentencias sentencia .
+
+    IF              reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    WHILE           reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    DO              reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    ELSE            reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    CIN             reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    COUT            reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    ID              reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    LPAREN          reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    NUMBER          reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    RBRACE          reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    INT             reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    INTEGER         reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    FLOAT           reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    CHAR            reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    STRING          reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    BOOLEAN         reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+    DOUBLE          reduce using rule 17 (listaSentencias -> listaSentencias sentencia .)
+
+
+state 44
+
+    (6) declaracionVariable -> tipo listaIdentificadores . SEMICOLON
+
+    SEMICOLON       shift and go to state 76
+
+
+state 45
+
+    (7) declaracionVariable -> tipo ID . EQUAL expresion SEMICOLON
+    (8) listaIdentificadores -> ID .
+    (9) listaIdentificadores -> ID . COMMA listaIdentificadores
+
+    EQUAL           shift and go to state 77
+    SEMICOLON       reduce using rule 8 (listaIdentificadores -> ID .)
+    COMMA           shift and go to state 78
+
+
+state 46
+
+    (29) asignacion -> ID EQUAL . sentExpresion
+    (33) sentExpresion -> . expresion SEMICOLON
+    (34) sentExpresion -> . incremento SEMICOLON
+    (35) sentExpresion -> . SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    SEMICOLON       shift and go to state 82
+    ID              shift and go to state 79
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    sentExpresion                  shift and go to state 80
+    expresion                      shift and go to state 81
+    incremento                     shift and go to state 83
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 47
+
+    (30) asignacion -> ID DEQUAL . sentExpresion
+    (33) sentExpresion -> . expresion SEMICOLON
+    (34) sentExpresion -> . incremento SEMICOLON
+    (35) sentExpresion -> . SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    SEMICOLON       shift and go to state 82
+    ID              shift and go to state 79
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    sentExpresion                  shift and go to state 84
+    expresion                      shift and go to state 81
+    incremento                     shift and go to state 83
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 48
+
+    (31) incremento -> ID PLUSPLUS . SEMICOLON
+
+    SEMICOLON       shift and go to state 85
+
+
+state 49
+
+    (32) incremento -> ID MINUSMINUS . SEMICOLON
+
+    SEMICOLON       shift and go to state 86
+
+
+state 50
+
+    (41) andor -> expresion AND . expresion
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 87
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 51
+
+    (42) andor -> expresion OR . expresion
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 88
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 52
+
+    (36) seleccion -> IF expresion . LBRACE listaSentencias RBRACE
+    (37) seleccion -> IF expresion . LBRACE listaSentencias RBRACE elseif
+
+    LBRACE          shift and go to state 89
+
+
+state 53
+
+    (38) seleccion -> IF LPAREN . andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> IF LPAREN . andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (67) primario -> LPAREN . expresion RPAREN
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    andor                          shift and go to state 90
+    expresion                      shift and go to state 91
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 54
+
+    (68) primario -> ID .
+
+    POWER           reduce using rule 68 (primario -> ID .)
+    TIMES           reduce using rule 68 (primario -> ID .)
+    DIVIDE          reduce using rule 68 (primario -> ID .)
+    MOD             reduce using rule 68 (primario -> ID .)
+    LESS            reduce using rule 68 (primario -> ID .)
+    LESSEQUAL       reduce using rule 68 (primario -> ID .)
+    GREATER         reduce using rule 68 (primario -> ID .)
+    GREATEREQUAL    reduce using rule 68 (primario -> ID .)
+    DEQUAL          reduce using rule 68 (primario -> ID .)
+    NEQUAL          reduce using rule 68 (primario -> ID .)
+    PLUS            reduce using rule 68 (primario -> ID .)
+    MINUS           reduce using rule 68 (primario -> ID .)
+    LBRACE          reduce using rule 68 (primario -> ID .)
+    RPAREN          reduce using rule 68 (primario -> ID .)
+    IF              reduce using rule 68 (primario -> ID .)
+    WHILE           reduce using rule 68 (primario -> ID .)
+    DO              reduce using rule 68 (primario -> ID .)
+    ELSE            reduce using rule 68 (primario -> ID .)
+    CIN             reduce using rule 68 (primario -> ID .)
+    COUT            reduce using rule 68 (primario -> ID .)
+    ID              reduce using rule 68 (primario -> ID .)
+    LPAREN          reduce using rule 68 (primario -> ID .)
+    NUMBER          reduce using rule 68 (primario -> ID .)
+    RBRACE          reduce using rule 68 (primario -> ID .)
+    INT             reduce using rule 68 (primario -> ID .)
+    INTEGER         reduce using rule 68 (primario -> ID .)
+    FLOAT           reduce using rule 68 (primario -> ID .)
+    CHAR            reduce using rule 68 (primario -> ID .)
+    STRING          reduce using rule 68 (primario -> ID .)
+    BOOLEAN         reduce using rule 68 (primario -> ID .)
+    DOUBLE          reduce using rule 68 (primario -> ID .)
+    SEMICOLON       reduce using rule 68 (primario -> ID .)
+    AND             reduce using rule 68 (primario -> ID .)
+    OR              reduce using rule 68 (primario -> ID .)
+
+
+state 55
+
+    (67) primario -> LPAREN expresion . RPAREN
+
+    RPAREN          shift and go to state 92
+
+
+state 56
+
+    (43) iteracion -> WHILE expresion .
+    (44) iteracion -> WHILE expresion . LBRACE listaSentencias RBRACE
+
+    IF              reduce using rule 43 (iteracion -> WHILE expresion .)
+    WHILE           reduce using rule 43 (iteracion -> WHILE expresion .)
+    DO              reduce using rule 43 (iteracion -> WHILE expresion .)
+    ELSE            reduce using rule 43 (iteracion -> WHILE expresion .)
+    CIN             reduce using rule 43 (iteracion -> WHILE expresion .)
+    COUT            reduce using rule 43 (iteracion -> WHILE expresion .)
+    ID              reduce using rule 43 (iteracion -> WHILE expresion .)
+    LPAREN          reduce using rule 43 (iteracion -> WHILE expresion .)
+    NUMBER          reduce using rule 43 (iteracion -> WHILE expresion .)
+    RBRACE          reduce using rule 43 (iteracion -> WHILE expresion .)
+    INT             reduce using rule 43 (iteracion -> WHILE expresion .)
+    INTEGER         reduce using rule 43 (iteracion -> WHILE expresion .)
+    FLOAT           reduce using rule 43 (iteracion -> WHILE expresion .)
+    CHAR            reduce using rule 43 (iteracion -> WHILE expresion .)
+    STRING          reduce using rule 43 (iteracion -> WHILE expresion .)
+    BOOLEAN         reduce using rule 43 (iteracion -> WHILE expresion .)
+    DOUBLE          reduce using rule 43 (iteracion -> WHILE expresion .)
+    LBRACE          shift and go to state 93
+
+
+state 57
+
+    (45) repeticion -> DO LBRACE . listaSentencias RBRACE iteracion
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+
+    listaSentencias                shift and go to state 94
+    iteracion                      shift and go to state 21
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 58
+
+    (40) elseif -> ELSE LBRACE . listaSentencias RBRACE
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+
+    listaSentencias                shift and go to state 95
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 59
+
+    (46) sentIn -> CIN ID . SEMICOLON
+
+    SEMICOLON       shift and go to state 96
+
+
+state 60
+
+    (47) sentOut -> COUT expresion . SEMICOLON
+
+    SEMICOLON       shift and go to state 97
+
+
+state 61
+
+    (49) expresion -> expresionSimple relacionOp . expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresionSimple                shift and go to state 98
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 62
+
+    (56) expresionSimple -> expresionSimple sumaOp . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    termino                        shift and go to state 99
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 63
+
+    (50) relacionOp -> LESS .
+
+    LPAREN          reduce using rule 50 (relacionOp -> LESS .)
+    ID              reduce using rule 50 (relacionOp -> LESS .)
+    NUMBER          reduce using rule 50 (relacionOp -> LESS .)
+
+
+state 64
+
+    (51) relacionOp -> LESSEQUAL .
+
+    LPAREN          reduce using rule 51 (relacionOp -> LESSEQUAL .)
+    ID              reduce using rule 51 (relacionOp -> LESSEQUAL .)
+    NUMBER          reduce using rule 51 (relacionOp -> LESSEQUAL .)
+
+
+state 65
+
+    (52) relacionOp -> GREATER .
+
+    LPAREN          reduce using rule 52 (relacionOp -> GREATER .)
+    ID              reduce using rule 52 (relacionOp -> GREATER .)
+    NUMBER          reduce using rule 52 (relacionOp -> GREATER .)
+
+
+state 66
+
+    (53) relacionOp -> GREATEREQUAL .
+
+    LPAREN          reduce using rule 53 (relacionOp -> GREATEREQUAL .)
+    ID              reduce using rule 53 (relacionOp -> GREATEREQUAL .)
+    NUMBER          reduce using rule 53 (relacionOp -> GREATEREQUAL .)
+
+
+state 67
+
+    (54) relacionOp -> DEQUAL .
+
+    LPAREN          reduce using rule 54 (relacionOp -> DEQUAL .)
+    ID              reduce using rule 54 (relacionOp -> DEQUAL .)
+    NUMBER          reduce using rule 54 (relacionOp -> DEQUAL .)
+
+
+state 68
+
+    (55) relacionOp -> NEQUAL .
+
+    LPAREN          reduce using rule 55 (relacionOp -> NEQUAL .)
+    ID              reduce using rule 55 (relacionOp -> NEQUAL .)
+    NUMBER          reduce using rule 55 (relacionOp -> NEQUAL .)
+
+
+state 69
+
+    (58) sumaOp -> PLUS .
+
+    LPAREN          reduce using rule 58 (sumaOp -> PLUS .)
+    ID              reduce using rule 58 (sumaOp -> PLUS .)
+    NUMBER          reduce using rule 58 (sumaOp -> PLUS .)
+
+
+state 70
+
+    (59) sumaOp -> MINUS .
+
+    LPAREN          reduce using rule 59 (sumaOp -> MINUS .)
+    ID              reduce using rule 59 (sumaOp -> MINUS .)
+    NUMBER          reduce using rule 59 (sumaOp -> MINUS .)
+
+
+state 71
+
+    (60) termino -> termino mulOp . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    factor                         shift and go to state 100
+    primario                       shift and go to state 39
+
+state 72
+
+    (62) mulOp -> TIMES .
+
+    LPAREN          reduce using rule 62 (mulOp -> TIMES .)
+    ID              reduce using rule 62 (mulOp -> TIMES .)
+    NUMBER          reduce using rule 62 (mulOp -> TIMES .)
+
+
+state 73
+
+    (63) mulOp -> DIVIDE .
+
+    LPAREN          reduce using rule 63 (mulOp -> DIVIDE .)
+    ID              reduce using rule 63 (mulOp -> DIVIDE .)
+    NUMBER          reduce using rule 63 (mulOp -> DIVIDE .)
+
+
+state 74
+
+    (64) mulOp -> MOD .
+
+    LPAREN          reduce using rule 64 (mulOp -> MOD .)
+    ID              reduce using rule 64 (mulOp -> MOD .)
+    NUMBER          reduce using rule 64 (mulOp -> MOD .)
+
+
+state 75
+
+    (65) factor -> factor POWER . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    primario                       shift and go to state 101
+
+state 76
+
+    (6) declaracionVariable -> tipo listaIdentificadores SEMICOLON .
+
+    RBRACE          reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    INT             reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    INTEGER         reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    FLOAT           reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    CHAR            reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    STRING          reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    BOOLEAN         reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    DOUBLE          reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    IF              reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    WHILE           reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    DO              reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    ELSE            reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    CIN             reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    COUT            reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    ID              reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    LPAREN          reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+    NUMBER          reduce using rule 6 (declaracionVariable -> tipo listaIdentificadores SEMICOLON .)
+
+
+state 77
+
+    (7) declaracionVariable -> tipo ID EQUAL . expresion SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    LPAREN          shift and go to state 30
+    ID              shift and go to state 54
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 102
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 78
+
+    (9) listaIdentificadores -> ID COMMA . listaIdentificadores
+    (8) listaIdentificadores -> . ID
+    (9) listaIdentificadores -> . ID COMMA listaIdentificadores
+
+    ID              shift and go to state 103
+
+    listaIdentificadores           shift and go to state 104
+
+state 79
+
+    (31) incremento -> ID . PLUSPLUS SEMICOLON
+    (32) incremento -> ID . MINUSMINUS SEMICOLON
+    (68) primario -> ID .
+
+    PLUSPLUS        shift and go to state 48
+    MINUSMINUS      shift and go to state 49
+    POWER           reduce using rule 68 (primario -> ID .)
+    TIMES           reduce using rule 68 (primario -> ID .)
+    DIVIDE          reduce using rule 68 (primario -> ID .)
+    MOD             reduce using rule 68 (primario -> ID .)
+    LESS            reduce using rule 68 (primario -> ID .)
+    LESSEQUAL       reduce using rule 68 (primario -> ID .)
+    GREATER         reduce using rule 68 (primario -> ID .)
+    GREATEREQUAL    reduce using rule 68 (primario -> ID .)
+    DEQUAL          reduce using rule 68 (primario -> ID .)
+    NEQUAL          reduce using rule 68 (primario -> ID .)
+    PLUS            reduce using rule 68 (primario -> ID .)
+    MINUS           reduce using rule 68 (primario -> ID .)
+    SEMICOLON       reduce using rule 68 (primario -> ID .)
+
+
+state 80
+
+    (29) asignacion -> ID EQUAL sentExpresion .
+
+    IF              reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    WHILE           reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    DO              reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    ELSE            reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    CIN             reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    COUT            reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    ID              reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    LPAREN          reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    NUMBER          reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    RBRACE          reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    INT             reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    INTEGER         reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    FLOAT           reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    CHAR            reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    STRING          reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    BOOLEAN         reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+    DOUBLE          reduce using rule 29 (asignacion -> ID EQUAL sentExpresion .)
+
+
+state 81
+
+    (33) sentExpresion -> expresion . SEMICOLON
+
+    SEMICOLON       shift and go to state 105
+
+
+state 82
+
+    (35) sentExpresion -> SEMICOLON .
+
+    IF              reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    WHILE           reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    DO              reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    ELSE            reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    CIN             reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    COUT            reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    ID              reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    LPAREN          reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    NUMBER          reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    RBRACE          reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    INT             reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    INTEGER         reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    FLOAT           reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    CHAR            reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    STRING          reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    BOOLEAN         reduce using rule 35 (sentExpresion -> SEMICOLON .)
+    DOUBLE          reduce using rule 35 (sentExpresion -> SEMICOLON .)
+
+
+state 83
+
+    (34) sentExpresion -> incremento . SEMICOLON
+
+    SEMICOLON       shift and go to state 106
+
+
+state 84
+
+    (30) asignacion -> ID DEQUAL sentExpresion .
+
+    IF              reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    WHILE           reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    DO              reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    ELSE            reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    CIN             reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    COUT            reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    ID              reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    LPAREN          reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    NUMBER          reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    RBRACE          reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    INT             reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    INTEGER         reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    FLOAT           reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    CHAR            reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    STRING          reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    BOOLEAN         reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+    DOUBLE          reduce using rule 30 (asignacion -> ID DEQUAL sentExpresion .)
+
+
+state 85
+
+    (31) incremento -> ID PLUSPLUS SEMICOLON .
+
+    IF              reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    WHILE           reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    DO              reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    ELSE            reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    CIN             reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    COUT            reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    ID              reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    LPAREN          reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    NUMBER          reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    RBRACE          reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    INT             reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    INTEGER         reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    FLOAT           reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    CHAR            reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    STRING          reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    BOOLEAN         reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    DOUBLE          reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+    SEMICOLON       reduce using rule 31 (incremento -> ID PLUSPLUS SEMICOLON .)
+
+
+state 86
+
+    (32) incremento -> ID MINUSMINUS SEMICOLON .
+
+    IF              reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    WHILE           reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    DO              reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    ELSE            reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    CIN             reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    COUT            reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    ID              reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    LPAREN          reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    NUMBER          reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    RBRACE          reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    INT             reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    INTEGER         reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    FLOAT           reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    CHAR            reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    STRING          reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    BOOLEAN         reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    DOUBLE          reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+    SEMICOLON       reduce using rule 32 (incremento -> ID MINUSMINUS SEMICOLON .)
+
+
+state 87
+
+    (41) andor -> expresion AND expresion .
+
+    IF              reduce using rule 41 (andor -> expresion AND expresion .)
+    WHILE           reduce using rule 41 (andor -> expresion AND expresion .)
+    DO              reduce using rule 41 (andor -> expresion AND expresion .)
+    ELSE            reduce using rule 41 (andor -> expresion AND expresion .)
+    CIN             reduce using rule 41 (andor -> expresion AND expresion .)
+    COUT            reduce using rule 41 (andor -> expresion AND expresion .)
+    ID              reduce using rule 41 (andor -> expresion AND expresion .)
+    LPAREN          reduce using rule 41 (andor -> expresion AND expresion .)
+    NUMBER          reduce using rule 41 (andor -> expresion AND expresion .)
+    RBRACE          reduce using rule 41 (andor -> expresion AND expresion .)
+    INT             reduce using rule 41 (andor -> expresion AND expresion .)
+    INTEGER         reduce using rule 41 (andor -> expresion AND expresion .)
+    FLOAT           reduce using rule 41 (andor -> expresion AND expresion .)
+    CHAR            reduce using rule 41 (andor -> expresion AND expresion .)
+    STRING          reduce using rule 41 (andor -> expresion AND expresion .)
+    BOOLEAN         reduce using rule 41 (andor -> expresion AND expresion .)
+    DOUBLE          reduce using rule 41 (andor -> expresion AND expresion .)
+    RPAREN          reduce using rule 41 (andor -> expresion AND expresion .)
+
+
+state 88
+
+    (42) andor -> expresion OR expresion .
+
+    IF              reduce using rule 42 (andor -> expresion OR expresion .)
+    WHILE           reduce using rule 42 (andor -> expresion OR expresion .)
+    DO              reduce using rule 42 (andor -> expresion OR expresion .)
+    ELSE            reduce using rule 42 (andor -> expresion OR expresion .)
+    CIN             reduce using rule 42 (andor -> expresion OR expresion .)
+    COUT            reduce using rule 42 (andor -> expresion OR expresion .)
+    ID              reduce using rule 42 (andor -> expresion OR expresion .)
+    LPAREN          reduce using rule 42 (andor -> expresion OR expresion .)
+    NUMBER          reduce using rule 42 (andor -> expresion OR expresion .)
+    RBRACE          reduce using rule 42 (andor -> expresion OR expresion .)
+    INT             reduce using rule 42 (andor -> expresion OR expresion .)
+    INTEGER         reduce using rule 42 (andor -> expresion OR expresion .)
+    FLOAT           reduce using rule 42 (andor -> expresion OR expresion .)
+    CHAR            reduce using rule 42 (andor -> expresion OR expresion .)
+    STRING          reduce using rule 42 (andor -> expresion OR expresion .)
+    BOOLEAN         reduce using rule 42 (andor -> expresion OR expresion .)
+    DOUBLE          reduce using rule 42 (andor -> expresion OR expresion .)
+    RPAREN          reduce using rule 42 (andor -> expresion OR expresion .)
+
+
+state 89
+
+    (36) seleccion -> IF expresion LBRACE . listaSentencias RBRACE
+    (37) seleccion -> IF expresion LBRACE . listaSentencias RBRACE elseif
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+
+    expresion                      shift and go to state 10
+    listaSentencias                shift and go to state 107
+    elseif                         shift and go to state 24
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 90
+
+    (38) seleccion -> IF LPAREN andor . RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> IF LPAREN andor . RPAREN LBRACE listaSentencias RBRACE elseif
+
+    RPAREN          shift and go to state 108
+
+
+state 91
+
+    (67) primario -> LPAREN expresion . RPAREN
+    (41) andor -> expresion . AND expresion
+    (42) andor -> expresion . OR expresion
+
+    RPAREN          shift and go to state 92
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+
+
+state 92
+
+    (67) primario -> LPAREN expresion RPAREN .
+
+    POWER           reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    TIMES           reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    DIVIDE          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    MOD             reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    LESS            reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    LESSEQUAL       reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    GREATER         reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    GREATEREQUAL    reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    DEQUAL          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    NEQUAL          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    PLUS            reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    MINUS           reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    AND             reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    OR              reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    LBRACE          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    RPAREN          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    IF              reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    WHILE           reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    DO              reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    ELSE            reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    CIN             reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    COUT            reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    ID              reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    LPAREN          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    NUMBER          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    RBRACE          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    INT             reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    INTEGER         reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    FLOAT           reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    CHAR            reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    STRING          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    BOOLEAN         reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    DOUBLE          reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+    SEMICOLON       reduce using rule 67 (primario -> LPAREN expresion RPAREN .)
+
+
+state 93
+
+    (44) iteracion -> WHILE expresion LBRACE . listaSentencias RBRACE
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+
+    expresion                      shift and go to state 10
+    listaSentencias                shift and go to state 109
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 94
+
+    (45) repeticion -> DO LBRACE listaSentencias . RBRACE iteracion
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    RBRACE          shift and go to state 110
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    iteracion                      shift and go to state 21
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 95
+
+    (40) elseif -> ELSE LBRACE listaSentencias . RBRACE
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    RBRACE          shift and go to state 111
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 96
+
+    (46) sentIn -> CIN ID SEMICOLON .
+
+    IF              reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    WHILE           reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    DO              reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    ELSE            reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    CIN             reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    COUT            reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    ID              reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    LPAREN          reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    NUMBER          reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    RBRACE          reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    INT             reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    INTEGER         reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    FLOAT           reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    CHAR            reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    STRING          reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    BOOLEAN         reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+    DOUBLE          reduce using rule 46 (sentIn -> CIN ID SEMICOLON .)
+
+
+state 97
+
+    (47) sentOut -> COUT expresion SEMICOLON .
+
+    IF              reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    WHILE           reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    DO              reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    ELSE            reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    CIN             reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    COUT            reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    ID              reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    LPAREN          reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    NUMBER          reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    RBRACE          reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    INT             reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    INTEGER         reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    FLOAT           reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    CHAR            reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    STRING          reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    BOOLEAN         reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+    DOUBLE          reduce using rule 47 (sentOut -> COUT expresion SEMICOLON .)
+
+
+state 98
+
+    (49) expresion -> expresionSimple relacionOp expresionSimple .
+    (56) expresionSimple -> expresionSimple . sumaOp termino
+    (58) sumaOp -> . PLUS
+    (59) sumaOp -> . MINUS
+
+    AND             reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    OR              reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    LBRACE          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    RPAREN          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    IF              reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    WHILE           reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    DO              reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    ELSE            reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    CIN             reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    COUT            reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    ID              reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    LPAREN          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    NUMBER          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    RBRACE          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    INT             reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    INTEGER         reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    FLOAT           reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    CHAR            reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    STRING          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    BOOLEAN         reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    DOUBLE          reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    SEMICOLON       reduce using rule 49 (expresion -> expresionSimple relacionOp expresionSimple .)
+    PLUS            shift and go to state 69
+    MINUS           shift and go to state 70
+
+    sumaOp                         shift and go to state 62
+
+state 99
+
+    (56) expresionSimple -> expresionSimple sumaOp termino .
+    (60) termino -> termino . mulOp factor
+    (62) mulOp -> . TIMES
+    (63) mulOp -> . DIVIDE
+    (64) mulOp -> . MOD
+
+    LESS            reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    LESSEQUAL       reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    GREATER         reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    GREATEREQUAL    reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    DEQUAL          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    NEQUAL          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    PLUS            reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    MINUS           reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    AND             reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    OR              reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    LBRACE          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    RPAREN          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    IF              reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    WHILE           reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    DO              reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    ELSE            reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    CIN             reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    COUT            reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    ID              reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    LPAREN          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    NUMBER          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    RBRACE          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    INT             reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    INTEGER         reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    FLOAT           reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    CHAR            reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    STRING          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    BOOLEAN         reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    DOUBLE          reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    SEMICOLON       reduce using rule 56 (expresionSimple -> expresionSimple sumaOp termino .)
+    TIMES           shift and go to state 72
+    DIVIDE          shift and go to state 73
+    MOD             shift and go to state 74
+
+    mulOp                          shift and go to state 71
+
+state 100
+
+    (60) termino -> termino mulOp factor .
+    (65) factor -> factor . POWER primario
+
+    TIMES           reduce using rule 60 (termino -> termino mulOp factor .)
+    DIVIDE          reduce using rule 60 (termino -> termino mulOp factor .)
+    MOD             reduce using rule 60 (termino -> termino mulOp factor .)
+    LESS            reduce using rule 60 (termino -> termino mulOp factor .)
+    LESSEQUAL       reduce using rule 60 (termino -> termino mulOp factor .)
+    GREATER         reduce using rule 60 (termino -> termino mulOp factor .)
+    GREATEREQUAL    reduce using rule 60 (termino -> termino mulOp factor .)
+    DEQUAL          reduce using rule 60 (termino -> termino mulOp factor .)
+    NEQUAL          reduce using rule 60 (termino -> termino mulOp factor .)
+    PLUS            reduce using rule 60 (termino -> termino mulOp factor .)
+    MINUS           reduce using rule 60 (termino -> termino mulOp factor .)
+    AND             reduce using rule 60 (termino -> termino mulOp factor .)
+    OR              reduce using rule 60 (termino -> termino mulOp factor .)
+    LBRACE          reduce using rule 60 (termino -> termino mulOp factor .)
+    RPAREN          reduce using rule 60 (termino -> termino mulOp factor .)
+    IF              reduce using rule 60 (termino -> termino mulOp factor .)
+    WHILE           reduce using rule 60 (termino -> termino mulOp factor .)
+    DO              reduce using rule 60 (termino -> termino mulOp factor .)
+    ELSE            reduce using rule 60 (termino -> termino mulOp factor .)
+    CIN             reduce using rule 60 (termino -> termino mulOp factor .)
+    COUT            reduce using rule 60 (termino -> termino mulOp factor .)
+    ID              reduce using rule 60 (termino -> termino mulOp factor .)
+    LPAREN          reduce using rule 60 (termino -> termino mulOp factor .)
+    NUMBER          reduce using rule 60 (termino -> termino mulOp factor .)
+    RBRACE          reduce using rule 60 (termino -> termino mulOp factor .)
+    INT             reduce using rule 60 (termino -> termino mulOp factor .)
+    INTEGER         reduce using rule 60 (termino -> termino mulOp factor .)
+    FLOAT           reduce using rule 60 (termino -> termino mulOp factor .)
+    CHAR            reduce using rule 60 (termino -> termino mulOp factor .)
+    STRING          reduce using rule 60 (termino -> termino mulOp factor .)
+    BOOLEAN         reduce using rule 60 (termino -> termino mulOp factor .)
+    DOUBLE          reduce using rule 60 (termino -> termino mulOp factor .)
+    SEMICOLON       reduce using rule 60 (termino -> termino mulOp factor .)
+    POWER           shift and go to state 75
+
+
+state 101
+
+    (65) factor -> factor POWER primario .
+
+    POWER           reduce using rule 65 (factor -> factor POWER primario .)
+    TIMES           reduce using rule 65 (factor -> factor POWER primario .)
+    DIVIDE          reduce using rule 65 (factor -> factor POWER primario .)
+    MOD             reduce using rule 65 (factor -> factor POWER primario .)
+    LESS            reduce using rule 65 (factor -> factor POWER primario .)
+    LESSEQUAL       reduce using rule 65 (factor -> factor POWER primario .)
+    GREATER         reduce using rule 65 (factor -> factor POWER primario .)
+    GREATEREQUAL    reduce using rule 65 (factor -> factor POWER primario .)
+    DEQUAL          reduce using rule 65 (factor -> factor POWER primario .)
+    NEQUAL          reduce using rule 65 (factor -> factor POWER primario .)
+    PLUS            reduce using rule 65 (factor -> factor POWER primario .)
+    MINUS           reduce using rule 65 (factor -> factor POWER primario .)
+    AND             reduce using rule 65 (factor -> factor POWER primario .)
+    OR              reduce using rule 65 (factor -> factor POWER primario .)
+    LBRACE          reduce using rule 65 (factor -> factor POWER primario .)
+    RPAREN          reduce using rule 65 (factor -> factor POWER primario .)
+    IF              reduce using rule 65 (factor -> factor POWER primario .)
+    WHILE           reduce using rule 65 (factor -> factor POWER primario .)
+    DO              reduce using rule 65 (factor -> factor POWER primario .)
+    ELSE            reduce using rule 65 (factor -> factor POWER primario .)
+    CIN             reduce using rule 65 (factor -> factor POWER primario .)
+    COUT            reduce using rule 65 (factor -> factor POWER primario .)
+    ID              reduce using rule 65 (factor -> factor POWER primario .)
+    LPAREN          reduce using rule 65 (factor -> factor POWER primario .)
+    NUMBER          reduce using rule 65 (factor -> factor POWER primario .)
+    RBRACE          reduce using rule 65 (factor -> factor POWER primario .)
+    INT             reduce using rule 65 (factor -> factor POWER primario .)
+    INTEGER         reduce using rule 65 (factor -> factor POWER primario .)
+    FLOAT           reduce using rule 65 (factor -> factor POWER primario .)
+    CHAR            reduce using rule 65 (factor -> factor POWER primario .)
+    STRING          reduce using rule 65 (factor -> factor POWER primario .)
+    BOOLEAN         reduce using rule 65 (factor -> factor POWER primario .)
+    DOUBLE          reduce using rule 65 (factor -> factor POWER primario .)
+    SEMICOLON       reduce using rule 65 (factor -> factor POWER primario .)
+
+
+state 102
+
+    (7) declaracionVariable -> tipo ID EQUAL expresion . SEMICOLON
+
+    SEMICOLON       shift and go to state 112
+
+
+state 103
+
+    (8) listaIdentificadores -> ID .
+    (9) listaIdentificadores -> ID . COMMA listaIdentificadores
+
+    SEMICOLON       reduce using rule 8 (listaIdentificadores -> ID .)
+    COMMA           shift and go to state 78
+
+
+state 104
+
+    (9) listaIdentificadores -> ID COMMA listaIdentificadores .
+
+    SEMICOLON       reduce using rule 9 (listaIdentificadores -> ID COMMA listaIdentificadores .)
+
+
+state 105
+
+    (33) sentExpresion -> expresion SEMICOLON .
+
+    IF              reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    WHILE           reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    DO              reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    ELSE            reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    CIN             reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    COUT            reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    ID              reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    LPAREN          reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    NUMBER          reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    RBRACE          reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    INT             reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    INTEGER         reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    FLOAT           reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    CHAR            reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    STRING          reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    BOOLEAN         reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+    DOUBLE          reduce using rule 33 (sentExpresion -> expresion SEMICOLON .)
+
+
+state 106
+
+    (34) sentExpresion -> incremento SEMICOLON .
+
+    IF              reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    WHILE           reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    DO              reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    ELSE            reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    CIN             reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    COUT            reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    ID              reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    LPAREN          reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    NUMBER          reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    RBRACE          reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    INT             reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    INTEGER         reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    FLOAT           reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    CHAR            reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    STRING          reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    BOOLEAN         reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+    DOUBLE          reduce using rule 34 (sentExpresion -> incremento SEMICOLON .)
+
+
+state 107
+
+    (36) seleccion -> IF expresion LBRACE listaSentencias . RBRACE
+    (37) seleccion -> IF expresion LBRACE listaSentencias . RBRACE elseif
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    RBRACE          shift and go to state 113
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 10
+    elseif                         shift and go to state 24
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 108
+
+    (38) seleccion -> IF LPAREN andor RPAREN . LBRACE listaSentencias RBRACE
+    (39) seleccion -> IF LPAREN andor RPAREN . LBRACE listaSentencias RBRACE elseif
+
+    LBRACE          shift and go to state 114
+
+
+state 109
+
+    (44) iteracion -> WHILE expresion LBRACE listaSentencias . RBRACE
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    RBRACE          shift and go to state 115
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    expresion                      shift and go to state 10
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 110
+
+    (45) repeticion -> DO LBRACE listaSentencias RBRACE . iteracion
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+
+    WHILE           shift and go to state 31
+
+    iteracion                      shift and go to state 116
+
+state 111
+
+    (40) elseif -> ELSE LBRACE listaSentencias RBRACE .
+
+    IF              reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    WHILE           reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    DO              reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    ELSE            reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    CIN             reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    COUT            reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    ID              reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    LPAREN          reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    NUMBER          reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    RBRACE          reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    INT             reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    INTEGER         reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    FLOAT           reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    CHAR            reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    STRING          reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    BOOLEAN         reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+    DOUBLE          reduce using rule 40 (elseif -> ELSE LBRACE listaSentencias RBRACE .)
+
+
+state 112
+
+    (7) declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .
+
+    RBRACE          reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    INT             reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    INTEGER         reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    FLOAT           reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    CHAR            reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    STRING          reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    BOOLEAN         reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    DOUBLE          reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    IF              reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    WHILE           reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    DO              reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    ELSE            reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    CIN             reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    COUT            reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    ID              reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    LPAREN          reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+    NUMBER          reduce using rule 7 (declaracionVariable -> tipo ID EQUAL expresion SEMICOLON .)
+
+
+state 113
+
+    (36) seleccion -> IF expresion LBRACE listaSentencias RBRACE .
+    (37) seleccion -> IF expresion LBRACE listaSentencias RBRACE . elseif
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    IF              reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    WHILE           reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    DO              reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    CIN             reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    COUT            reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    ID              reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    LPAREN          reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    NUMBER          reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    RBRACE          reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    INT             reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    INTEGER         reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    FLOAT           reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    CHAR            reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    STRING          reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    BOOLEAN         reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    DOUBLE          reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .)
+    ELSE            shift and go to state 33
+
+  ! ELSE            [ reduce using rule 36 (seleccion -> IF expresion LBRACE listaSentencias RBRACE .) ]
+
+    elseif                         shift and go to state 117
+
+state 114
+
+    (38) seleccion -> IF LPAREN andor RPAREN LBRACE . listaSentencias RBRACE
+    (39) seleccion -> IF LPAREN andor RPAREN LBRACE . listaSentencias RBRACE elseif
+    (17) listaSentencias -> . listaSentencias sentencia
+    (18) listaSentencias -> . sentencia
+    (19) listaSentencias -> . empty
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (70) empty -> .
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for CIN resolved as shift
+  ! shift/reduce conflict for COUT resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+    RBRACE          reduce using rule 70 (empty -> .)
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+  ! IF              [ reduce using rule 70 (empty -> .) ]
+  ! WHILE           [ reduce using rule 70 (empty -> .) ]
+  ! DO              [ reduce using rule 70 (empty -> .) ]
+  ! ELSE            [ reduce using rule 70 (empty -> .) ]
+  ! CIN             [ reduce using rule 70 (empty -> .) ]
+  ! COUT            [ reduce using rule 70 (empty -> .) ]
+  ! ID              [ reduce using rule 70 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 70 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 70 (empty -> .) ]
+
+    andor                          shift and go to state 23
+    listaSentencias                shift and go to state 118
+    elseif                         shift and go to state 24
+    sentencia                      shift and go to state 11
+    empty                          shift and go to state 12
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 115
+
+    (44) iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .
+
+    IF              reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    WHILE           reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    DO              reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    ELSE            reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    CIN             reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    COUT            reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    ID              reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    LPAREN          reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    NUMBER          reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    RBRACE          reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    INT             reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    INTEGER         reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    FLOAT           reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    CHAR            reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    STRING          reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    BOOLEAN         reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+    DOUBLE          reduce using rule 44 (iteracion -> WHILE expresion LBRACE listaSentencias RBRACE .)
+
+
+state 116
+
+    (45) repeticion -> DO LBRACE listaSentencias RBRACE iteracion .
+
+    IF              reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    WHILE           reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    DO              reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    ELSE            reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    CIN             reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    COUT            reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    ID              reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    LPAREN          reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    NUMBER          reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    RBRACE          reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    INT             reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    INTEGER         reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    FLOAT           reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    CHAR            reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    STRING          reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    BOOLEAN         reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+    DOUBLE          reduce using rule 45 (repeticion -> DO LBRACE listaSentencias RBRACE iteracion .)
+
+
+state 117
+
+    (37) seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .
+
+    IF              reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    WHILE           reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    DO              reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    ELSE            reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    CIN             reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    COUT            reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    ID              reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    LPAREN          reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    NUMBER          reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    RBRACE          reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    INT             reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    INTEGER         reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    FLOAT           reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    CHAR            reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    STRING          reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    BOOLEAN         reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+    DOUBLE          reduce using rule 37 (seleccion -> IF expresion LBRACE listaSentencias RBRACE elseif .)
+
+
+state 118
+
+    (38) seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias . RBRACE
+    (39) seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias . RBRACE elseif
+    (17) listaSentencias -> listaSentencias . sentencia
+    (20) sentencia -> . seleccion
+    (21) sentencia -> . iteracion
+    (22) sentencia -> . repeticion
+    (23) sentencia -> . andor
+    (24) sentencia -> . elseif
+    (25) sentencia -> . sentIn
+    (26) sentencia -> . sentOut
+    (27) sentencia -> . asignacion
+    (28) sentencia -> . incremento
+    (36) seleccion -> . IF expresion LBRACE listaSentencias RBRACE
+    (37) seleccion -> . IF expresion LBRACE listaSentencias RBRACE elseif
+    (38) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE
+    (39) seleccion -> . IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif
+    (43) iteracion -> . WHILE expresion
+    (44) iteracion -> . WHILE expresion LBRACE listaSentencias RBRACE
+    (45) repeticion -> . DO LBRACE listaSentencias RBRACE iteracion
+    (41) andor -> . expresion AND expresion
+    (42) andor -> . expresion OR expresion
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+    (46) sentIn -> . CIN ID SEMICOLON
+    (47) sentOut -> . COUT expresion SEMICOLON
+    (29) asignacion -> . ID EQUAL sentExpresion
+    (30) asignacion -> . ID DEQUAL sentExpresion
+    (31) incremento -> . ID PLUSPLUS SEMICOLON
+    (32) incremento -> . ID MINUSMINUS SEMICOLON
+    (48) expresion -> . expresionSimple
+    (49) expresion -> . expresionSimple relacionOp expresionSimple
+    (56) expresionSimple -> . expresionSimple sumaOp termino
+    (57) expresionSimple -> . termino
+    (60) termino -> . termino mulOp factor
+    (61) termino -> . factor
+    (65) factor -> . factor POWER primario
+    (66) factor -> . primario
+    (67) primario -> . LPAREN expresion RPAREN
+    (68) primario -> . ID
+    (69) primario -> . NUMBER
+
+    RBRACE          shift and go to state 119
+    IF              shift and go to state 29
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    ELSE            shift and go to state 33
+    CIN             shift and go to state 34
+    COUT            shift and go to state 35
+    ID              shift and go to state 9
+    LPAREN          shift and go to state 30
+    NUMBER          shift and go to state 40
+
+    andor                          shift and go to state 23
+    elseif                         shift and go to state 24
+    sentencia                      shift and go to state 43
+    seleccion                      shift and go to state 20
+    iteracion                      shift and go to state 21
+    repeticion                     shift and go to state 22
+    sentIn                         shift and go to state 25
+    sentOut                        shift and go to state 26
+    asignacion                     shift and go to state 27
+    incremento                     shift and go to state 28
+    expresion                      shift and go to state 10
+    expresionSimple                shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    primario                       shift and go to state 39
+
+state 119
+
+    (38) seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .
+    (39) seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE . elseif
+    (40) elseif -> . ELSE LBRACE listaSentencias RBRACE
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    IF              reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    WHILE           reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    DO              reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    CIN             reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    COUT            reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    ID              reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    LPAREN          reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    NUMBER          reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    RBRACE          reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    INT             reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    INTEGER         reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    FLOAT           reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    CHAR            reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    STRING          reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    BOOLEAN         reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    DOUBLE          reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .)
+    ELSE            shift and go to state 33
+
+  ! ELSE            [ reduce using rule 38 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE .) ]
+
+    elseif                         shift and go to state 120
+
+state 120
+
+    (39) seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .
+
+    IF              reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    WHILE           reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    DO              reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    ELSE            reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    CIN             reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    COUT            reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    ID              reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    LPAREN          reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    NUMBER          reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    RBRACE          reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    INT             reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    INTEGER         reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    FLOAT           reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    CHAR            reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    STRING          reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    BOOLEAN         reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+    DOUBLE          reduce using rule 39 (seleccion -> IF LPAREN andor RPAREN LBRACE listaSentencias RBRACE elseif .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for INT in state 3 resolved as shift
+WARNING: shift/reduce conflict for INTEGER in state 3 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 3 resolved as shift
+WARNING: shift/reduce conflict for CHAR in state 3 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 3 resolved as shift
+WARNING: shift/reduce conflict for BOOLEAN in state 3 resolved as shift
+WARNING: shift/reduce conflict for DOUBLE in state 3 resolved as shift
+WARNING: shift/reduce conflict for IF in state 3 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 3 resolved as shift
+WARNING: shift/reduce conflict for DO in state 3 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 3 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 3 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 3 resolved as shift
+WARNING: shift/reduce conflict for ID in state 3 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 3 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 3 resolved as shift
+WARNING: shift/reduce conflict for RBRACE in state 4 resolved as shift
+WARNING: shift/reduce conflict for INT in state 4 resolved as shift
+WARNING: shift/reduce conflict for INTEGER in state 4 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 4 resolved as shift
+WARNING: shift/reduce conflict for CHAR in state 4 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 4 resolved as shift
+WARNING: shift/reduce conflict for BOOLEAN in state 4 resolved as shift
+WARNING: shift/reduce conflict for DOUBLE in state 4 resolved as shift
+WARNING: shift/reduce conflict for IF in state 4 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 4 resolved as shift
+WARNING: shift/reduce conflict for DO in state 4 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 4 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 4 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 4 resolved as shift
+WARNING: shift/reduce conflict for ID in state 4 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 4 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 4 resolved as shift
+WARNING: shift/reduce conflict for IF in state 7 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 7 resolved as shift
+WARNING: shift/reduce conflict for DO in state 7 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 7 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 7 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 7 resolved as shift
+WARNING: shift/reduce conflict for ID in state 7 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 7 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 7 resolved as shift
+WARNING: shift/reduce conflict for DEQUAL in state 9 resolved as shift
+WARNING: shift/reduce conflict for IF in state 57 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 57 resolved as shift
+WARNING: shift/reduce conflict for DO in state 57 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 57 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 57 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 57 resolved as shift
+WARNING: shift/reduce conflict for ID in state 57 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 57 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 57 resolved as shift
+WARNING: shift/reduce conflict for IF in state 58 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 58 resolved as shift
+WARNING: shift/reduce conflict for DO in state 58 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 58 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 58 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 58 resolved as shift
+WARNING: shift/reduce conflict for ID in state 58 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 58 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 58 resolved as shift
+WARNING: shift/reduce conflict for IF in state 89 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 89 resolved as shift
+WARNING: shift/reduce conflict for DO in state 89 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 89 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 89 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 89 resolved as shift
+WARNING: shift/reduce conflict for ID in state 89 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 89 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 89 resolved as shift
+WARNING: shift/reduce conflict for IF in state 93 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 93 resolved as shift
+WARNING: shift/reduce conflict for DO in state 93 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 93 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 93 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 93 resolved as shift
+WARNING: shift/reduce conflict for ID in state 93 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 93 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 93 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 113 resolved as shift
+WARNING: shift/reduce conflict for IF in state 114 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 114 resolved as shift
+WARNING: shift/reduce conflict for DO in state 114 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 114 resolved as shift
+WARNING: shift/reduce conflict for CIN in state 114 resolved as shift
+WARNING: shift/reduce conflict for COUT in state 114 resolved as shift
+WARNING: shift/reduce conflict for ID in state 114 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 114 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 114 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 119 resolved as shift

@@ -1,0 +1,8 @@
+Nombre de Variable   | Tipo       | Valor      | Registro   | Números de Línea    
+--------------------------------------------------------------------------------
+x                    | integer    | No asignado | 0          | None                
+y                    | integer    | No asignado | 1          | None                
+z                    | integer    | No asignado | 2          | None                
+a                    | double     | No asignado | 3          | None                
+b                    | double     | No asignado | 4          | None                
+c                    | double     | No asignado | 5          | None                

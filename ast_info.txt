@@ -1,0 +1,1742 @@
+{
+  "label": "programa",
+  "children": [
+    [
+      {
+        "label": "declaracionVariable",
+        "children": [
+          [
+            "tipo",
+            "int"
+          ],
+          [
+            "identificador",
+            "x",
+            [
+              "y",
+              [
+                "z",
+                [
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      {
+        "label": "declaracionVariable",
+        "children": [
+          [
+            "tipo",
+            "double"
+          ],
+          [
+            "identificador",
+            "a",
+            [
+              "b",
+              [
+                "c",
+                [
+                  "a"
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      [
+        {
+          "label": "sentOut",
+          "children": [
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                6
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "+",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                7
+                              ]
+                            }
+                          ]
+                        },
+                        "/",
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            3
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "suma",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            45
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "x",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            32.32
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "x",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            23
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "y",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "expresionSimple",
+                          "children": [
+                            {
+                              "label": "termino",
+                              "children": [
+                                {
+                                  "label": "factor",
+                                  "children": [
+                                    "componente",
+                                    2
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "+",
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                3
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "-",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            1
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "z",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                "y"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "+",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            7
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "y",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                "y"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "+",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            1
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "a",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "expresionSimple",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            24.0
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "+",
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        4
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "-",
+                            {
+                              "label": "termino",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            1
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "/",
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        3
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "*",
+                                {
+                                  "label": "factor",
+                                  "children": [
+                                    "componente",
+                                    2
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "+",
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                34
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "-",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            1
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "x",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                {
+                                  "label": "expresion",
+                                  "children": [
+                                    {
+                                      "label": "expresionSimple",
+                                      "children": [
+                                        {
+                                          "label": "expresionSimple",
+                                          "children": [
+                                            {
+                                              "label": "termino",
+                                              "children": [
+                                                {
+                                                  "label": "factor",
+                                                  "children": [
+                                                    "componente",
+                                                    5
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "-",
+                                        {
+                                          "label": "termino",
+                                          "children": [
+                                            {
+                                              "label": "factor",
+                                              "children": [
+                                                "componente",
+                                                3
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "*",
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            {
+                              "label": "expresion",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "termino",
+                                          "children": [
+                                            {
+                                              "label": "factor",
+                                              "children": [
+                                                "componente",
+                                                8
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "/",
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            2
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "y",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "expresionSimple",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        5
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "+",
+                            {
+                              "label": "termino",
+                              "children": [
+                                {
+                                  "label": "factor",
+                                  "children": [
+                                    "componente",
+                                    3
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "-",
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "termino",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        2
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "*",
+                                {
+                                  "label": "factor",
+                                  "children": [
+                                    "componente",
+                                    4
+                                  ]
+                                }
+                              ]
+                            },
+                            "/",
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                7
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "-",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            9
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "z",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "termino",
+                              "children": [
+                                {
+                                  "label": "factor",
+                                  "children": [
+                                    "componente",
+                                    8
+                                  ]
+                                }
+                              ]
+                            },
+                            "/",
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                2
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "+",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                15
+                              ]
+                            }
+                          ]
+                        },
+                        "*",
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            4
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "y",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            14.54
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "y",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                2
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "-",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            2
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "seleccion",
+          "children": [
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            {
+                              "label": "expresion",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            2
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                ">",
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            3
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            [
+              {
+                "label": "asignacion",
+                "children": [
+                  "y",
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "expresionSimple",
+                            "children": [
+                              {
+                                "label": "termino",
+                                "children": [
+                                  {
+                                    "label": "factor",
+                                    "children": [
+                                      "componente",
+                                      "a"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "+",
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  3
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            [
+              {
+                "label": "seleccion",
+                "children": [
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  {
+                                    "label": "expresion",
+                                    "children": [
+                                      {
+                                        "label": "expresionSimple",
+                                        "children": [
+                                          {
+                                            "label": "termino",
+                                            "children": [
+                                              {
+                                                "label": "factor",
+                                                "children": [
+                                                  "componente",
+                                                  4
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      ">",
+                                      {
+                                        "label": "expresionSimple",
+                                        "children": [
+                                          {
+                                            "label": "termino",
+                                            "children": [
+                                              {
+                                                "label": "factor",
+                                                "children": [
+                                                  "componente",
+                                                  2
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  [
+                    {
+                      "label": "asignacion",
+                      "children": [
+                        "b",
+                        {
+                          "label": "expresion",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        3.2
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "label": "asignacion",
+                      "children": [
+                        "b",
+                        {
+                          "label": "expresion",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        5.0
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "label": "asignacion",
+                "children": [
+                  "y",
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "expresionSimple",
+                            "children": [
+                              {
+                                "label": "termino",
+                                "children": [
+                                  {
+                                    "label": "factor",
+                                    "children": [
+                                      "componente",
+                                      "y"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "+",
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  1
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "label": "incremento",
+          "children": [
+            "a",
+            "++"
+          ]
+        },
+        {
+          "label": "incremento",
+          "children": [
+            "c",
+            "--"
+          ]
+        },
+        {
+          "label": "asignacion",
+          "children": [
+            "x",
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "expresionSimple",
+                      "children": [
+                        {
+                          "label": "termino",
+                          "children": [
+                            {
+                              "label": "factor",
+                              "children": [
+                                "componente",
+                                3
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "+",
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            4
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "repeticion",
+          "children": [
+            [
+              {
+                "label": "asignacion",
+                "children": [
+                  "y",
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "expresionSimple",
+                            "children": [
+                              {
+                                "label": "termino",
+                                "children": [
+                                  {
+                                    "label": "termino",
+                                    "children": [
+                                      {
+                                        "label": "factor",
+                                        "children": [
+                                          "componente",
+                                          {
+                                            "label": "expresion",
+                                            "children": [
+                                              {
+                                                "label": "expresionSimple",
+                                                "children": [
+                                                  {
+                                                    "label": "expresionSimple",
+                                                    "children": [
+                                                      {
+                                                        "label": "termino",
+                                                        "children": [
+                                                          {
+                                                            "label": "factor",
+                                                            "children": [
+                                                              "componente",
+                                                              "y"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  "+",
+                                                  {
+                                                    "label": "termino",
+                                                    "children": [
+                                                      {
+                                                        "label": "factor",
+                                                        "children": [
+                                                          "componente",
+                                                          1
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "*",
+                                  {
+                                    "label": "factor",
+                                    "children": [
+                                      "componente",
+                                      2
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "+",
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  1
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "iteracion",
+                "children": [
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  {
+                                    "label": "expresion",
+                                    "children": [
+                                      {
+                                        "label": "expresion",
+                                        "children": [
+                                          {
+                                            "label": "expresionSimple",
+                                            "children": [
+                                              {
+                                                "label": "termino",
+                                                "children": [
+                                                  {
+                                                    "label": "factor",
+                                                    "children": [
+                                                      "componente",
+                                                      "x"
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          ">",
+                                          {
+                                            "label": "expresionSimple",
+                                            "children": [
+                                              {
+                                                "label": "termino",
+                                                "children": [
+                                                  {
+                                                    "label": "factor",
+                                                    "children": [
+                                                      "componente",
+                                                      7
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "and",
+                                      {
+                                        "label": "expresion",
+                                        "children": [
+                                          {
+                                            "label": "expresionSimple",
+                                            "children": [
+                                              {
+                                                "label": "termino",
+                                                "children": [
+                                                  {
+                                                    "label": "factor",
+                                                    "children": [
+                                                      "componente",
+                                                      "y"
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "<",
+                                          {
+                                            "label": "expresionSimple",
+                                            "children": [
+                                              {
+                                                "label": "termino",
+                                                "children": [
+                                                  {
+                                                    "label": "factor",
+                                                    "children": [
+                                                      "componente",
+                                                      6
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  [
+                    {
+                      "label": "asignacion",
+                      "children": [
+                        "x",
+                        {
+                          "label": "expresion",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            6
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "+",
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "termino",
+                                          "children": [
+                                            {
+                                              "label": "termino",
+                                              "children": [
+                                                {
+                                                  "label": "factor",
+                                                  "children": [
+                                                    "componente",
+                                                    8
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            "/",
+                                            {
+                                              "label": "factor",
+                                              "children": [
+                                                "componente",
+                                                9
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "*",
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            8
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "/",
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        3
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "sentIn",
+                      "children": [
+                        "x"
+                      ]
+                    },
+                    {
+                      "label": "asignacion",
+                      "children": [
+                        "mas",
+                        {
+                          "label": "expresion",
+                          "children": [
+                            {
+                              "label": "expresionSimple",
+                              "children": [
+                                {
+                                  "label": "termino",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            36
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "/",
+                                    {
+                                      "label": "factor",
+                                      "children": [
+                                        "componente",
+                                        7
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            {
+                              "label": "expresion",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            "y"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "==",
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            5
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "iteracion",
+          "children": [
+            {
+              "label": "expresion",
+              "children": [
+                {
+                  "label": "expresionSimple",
+                  "children": [
+                    {
+                      "label": "termino",
+                      "children": [
+                        {
+                          "label": "factor",
+                          "children": [
+                            "componente",
+                            {
+                              "label": "expresion",
+                              "children": [
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            "y"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "==",
+                                {
+                                  "label": "expresionSimple",
+                                  "children": [
+                                    {
+                                      "label": "termino",
+                                      "children": [
+                                        {
+                                          "label": "factor",
+                                          "children": [
+                                            "componente",
+                                            0
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            [
+              {
+                "label": "sentIn",
+                "children": [
+                  "mas"
+                ]
+              },
+              {
+                "label": "sentOut",
+                "children": [
+                  {
+                    "label": "expresion",
+                    "children": [
+                      {
+                        "label": "expresionSimple",
+                        "children": [
+                          {
+                            "label": "expresionSimple",
+                            "children": [
+                              {
+                                "label": "expresionSimple",
+                                "children": [
+                                  {
+                                    "label": "termino",
+                                    "children": [
+                                      {
+                                        "label": "factor",
+                                        "children": [
+                                          "componente",
+                                          "x65"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "+",
+                              {
+                                "label": "termino",
+                                "children": [
+                                  {
+                                    "label": "factor",
+                                    "children": [
+                                      "componente",
+                                      32
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "+",
+                          {
+                            "label": "termino",
+                            "children": [
+                              {
+                                "label": "factor",
+                                "children": [
+                                  "componente",
+                                  6
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  ]
+}
