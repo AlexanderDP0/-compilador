@@ -9,40 +9,66 @@ class SymbolTable:
         if name in self.symbols:
             # Si el tipo es diferente, generar error
             if self.symbols[name]['type'] != var_type:
-                raise Exception(f"Error: Variable '{name}' redeclarada con un tipo diferente en la línea {line}.")
-            else:
+                first_declared_line = self.symbols[name]['line'][0]  # Obtener la primera línea de declaración
+                raise Exception(f"Error: Variable '{name}' redeclarada con un tipo diferente en la línea {line}."
+                                f"La declaración original fue en la línea {first_declared_line}.")
+            else:               
                 # Actualizar línea si es el mismo tipo
-                self.symbols[name]['line'].append(line)
+                if line is not None and line not in self.symbols[name]['line']:  # Asegurarse de que no se repita
+                    print(f"Actualizando línea para la variable '{name}': {line}")
+                    self.symbols[name]['line'].append(line)
         else:
+            print(f"Añadiendo nueva variable '{name}' de tipo '{var_type}' en línea {line}.")
             self.symbols[name] = {
                 'type': var_type,
                 'value': value,
-                'line': [line],  # Lista de líneas donde aparece
+                'line': [line] if line is not None else [],  # Lista de líneas donde aparece
                 'loc': self.loc_counter  # Usar loc_counter como el número de registro
             }
             self.loc_counter += 1  # Incrementar el contador después de añadir una variable
 
 
-    def get(self, name):
+    def get(self, name, line):
         if name in self.symbols:
             return self.symbols[name]
         else:
-            raise Exception(f"Error: Variable '{name}' no está declarada.")
+            raise Exception(f"Error: Variable '{name}' no está declarada antes de su uso en la línea {line}.")
 
     def update(self, name, value, line=None):
         if name in self.symbols:
             self.symbols[name]['value'] = value
-            if line is not None:
+            if line is not None and line not in self.symbols[name]['line']:  # Agregar línea solo si no está ya presente
                 self.symbols[name]['line'].append(line)  # Agregar la nueva línea si se proporciona
         else:
             raise Exception(f"Error: Variable '{name}' no está declarada.")
 
     def __repr__(self):
         return json.dumps(self.symbols, indent=2)
-    
+
+# Cargar las líneas del archivo analisisSyntax.txt
+def load_lines_from_file(file_path):
+    line_mapping = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            parts = line.strip().split(",")
+            if len(parts) != 3:  # Asegurarse de que la línea tiene tres partes
+                print(f"Formato incorrecto en la línea: {line.strip()}")
+                continue
+
+            try:
+                tipo = parts[0].split(":")[1].strip()
+                valor = parts[1].split(":")[1].strip()
+                linea = int(parts[2].split(":")[1].strip())
+                line_mapping[valor] = linea
+            except (IndexError, ValueError) as e:
+                print(f"Error al procesar la línea: {line.strip()} - {e}")
+                continue
+    return line_mapping
+
+
 errors = []
 
-def semantic_check(ast, symbol_table, error_callback):
+def semantic_check(ast, symbol_table, error_callback, line_mapping):
     if ast is None:
         return None
 
@@ -63,7 +89,7 @@ def semantic_check(ast, symbol_table, error_callback):
             if label == 'main':
                 print("Entering 'main' function.")
                 for child in children:
-                    semantic_check(child, symbol_table, error_callback)  # Procesar cada hijo del nodo 'main'
+                    semantic_check(child, symbol_table, error_callback, line_mapping)  # Procesar cada hijo del nodo 'main'
                 return None
             
             # Manejar declaraciones de variables
@@ -71,45 +97,57 @@ def semantic_check(ast, symbol_table, error_callback):
                 var_type = label
                 for var in children:
                     var_name = var['label']
-                    symbol_table.add(var_name, var_type, line=var.get('line'))  # Agregar variable con su línea
+                    line_number = line_mapping.get(var_name, 'desconocida')  # Obtener la línea del archivo
+                    symbol_table.add(var_name, var_type, line=line_number)  # Agregar variable con su línea
                 return None  # No es necesario devolver un valor ya que estamos declarando variables
 
+            # Asignaciones
             elif label == '=':
-                var_name = children[0]['label']  # Suponiendo que el primer hijo es el nombre de la variable
-                expr = semantic_check(children[1], symbol_table, error_callback)  # Procesa la expresión
+                var_name = children[0]['label']
+                line_number = line_mapping.get(var_name, 'desconocida')
+                
+                # Verificar si la variable ha sido declarada antes de usarla
+                try:
+                    var_info = symbol_table.get(var_name, line_number)
+                except Exception as e:
+                    error_callback(str(e))
+                    return {'type': 'error', 'value': None}
 
-                var_info = symbol_table.get(var_name)
+                expr = semantic_check(children[1], symbol_table, error_callback, line_mapping)
                 var_type = var_info['type']
 
+                # Verificar la promoción de tipos si es necesario
                 if var_type != expr['type']:
-                    error_message = f"Error: Incompatibilidad de tipos en asignación para '{var_name}'. Esperado '{var_type}', recibido '{expr['type']}' en la línea {ast.get('line', 'desconocida')}."
+                    error_message = f"Error: Incompatibilidad de tipos en asignación para '{var_name}'. Esperado '{var_type}', recibido '{expr['type']}' en la línea {line_number}."
                     error_callback(error_message)
 
-                symbol_table.update(var_name, expr['value'], line=ast.get('line'))  # Actualizar variable y agregar línea
+                # Actualizar la tabla de símbolos con el nuevo valor y línea
+                symbol_table.update(var_name, expr['value'], line=line_number)
                 return {'type': var_type, 'value': expr['value']}
 
-            # Otros casos como operaciones aritméticas, if, while...
+            # Operaciones aritméticas
             elif label in ['+', '-', '*', '/', '%']:
-                # Operaciones aritméticas
-                left = semantic_check(children[0], symbol_table, error_callback)
-                right = semantic_check(children[1], symbol_table, error_callback)
+                left = semantic_check(children[0], symbol_table, error_callback, line_mapping)
+                right = semantic_check(children[1], symbol_table, error_callback, line_mapping)
 
+                # Verificar tipos en ambos lados
                 if left['type'] != right['type']:
-                    error_message = f"Error: Incompatibilidad de tipos en operación '{label}'."
+                    error_message = f"Error: Incompatibilidad de tipos en operación '{label}' entre '{left['type']}' y '{right['type']}'."
                     print(error_message)
                     error_callback(error_message)
+                    return {'type': 'error', 'value': None}
 
                 # Tipo resultante será el mismo que el de los operandos
                 return {'type': left['type'], 'value': eval(f"{left['value']} {label} {right['value']}")}
 
-            # Operaciones relacionales y condicionales
+            # Operaciones relacionales y comparaciones
             elif label in ['<', '<=', '>', '>=', '==', '!=']:
-                # Operaciones relacionales
-                left = semantic_check(children[0], symbol_table, error_callback)
-                right = semantic_check(children[1], symbol_table, error_callback)
+                left = semantic_check(children[0], symbol_table, error_callback, line_mapping)
+                right = semantic_check(children[1], symbol_table, error_callback, line_mapping)
 
+                # Verificar tipos en ambos lados
                 if left['type'] != right['type']:
-                    error_message = f"Error: Incompatibilidad de tipos en comparación '{label}'."
+                    error_message = f"Error: Incompatibilidad de tipos en comparación '{label}' entre '{left['type']}' y '{right['type']}'."
                     print(error_message)
                     error_callback(error_message)
                     return {'type': 'error', 'value': None}
@@ -117,27 +155,31 @@ def semantic_check(ast, symbol_table, error_callback):
                 result_value = eval(f"{left['value']} {label} {right['value']}")
                 return {'type': 'boolean', 'value': result_value}
 
+            # Condicionales (if)
             elif label == 'if':
-                condition = semantic_check(children[0], symbol_table, error_callback)
+                condition = semantic_check(children[0], symbol_table, error_callback, line_mapping)
                 if condition['type'] != 'boolean':
                     error_message = "Error: La condición de la sentencia 'if' debe ser de tipo booleano."
                     print(error_message)
                     error_callback(error_message)
                     return {'type': 'error', 'value': None}
 
-                semantic_check(children[1], symbol_table, error_callback)  # Verificar sentencias dentro del if
-                if len(children) > 2:
-                    semantic_check(children[2], symbol_table, error_callback)  # Verificar sentencias dentro del else
+                # Procesar las sentencias dentro del bloque 'if'
+                semantic_check(children[1], symbol_table, error_callback, line_mapping)
+                if len(children) > 2:  # Procesar bloque 'else' si existe
+                    semantic_check(children[2], symbol_table, error_callback, line_mapping)
 
+            # Bucles (while)
             elif label == 'while':
-                condition = semantic_check(children[0], symbol_table, error_callback)
+                condition = semantic_check(children[0], symbol_table, error_callback, line_mapping)
                 if condition['type'] != 'boolean':
                     error_message = "Error: La condición de la sentencia 'while' debe ser de tipo booleano."
                     print(error_message)
                     error_callback(error_message)
                     return {'type': 'error', 'value': None}
 
-                semantic_check(children[1], symbol_table, error_callback)  # Verificar sentencias dentro del while
+                # Procesar las sentencias dentro del bloque 'while'
+                semantic_check(children[1], symbol_table, error_callback, line_mapping)
             else:
                 error_message = f"Error: Nodo desconocido '{label}'."
                 print(error_message)
@@ -150,6 +192,7 @@ def semantic_check(ast, symbol_table, error_callback):
             error_callback(error_message)
             return {'type': 'error', 'value': None}
 
+
 def error_callback(message):
     print(f"Error encontrado: {message}")
     
@@ -159,11 +202,18 @@ def annotate_tree(ast, symbol_table):
         annotated_node = {'label': label, 'children': []}
 
         # Si es un identificador (variable)
-        if label in symbol_table.symbols and ast.get('children') is None:
-            var_info = symbol_table.get(label)
+        if label in symbol_table.symbols:
+            var_info = symbol_table.get(label, line=None)  # Pass 'None' or a valid line number
             annotated_node['type'] = var_info['type']
             annotated_node['value'] = var_info['value']
 
+        # Si es una operación o asignación
+        if label == '=' or label in ['+', '-', '*', '/', '%']:
+            expr_type = ast.get('type', 'Desconocido')
+            annotated_node['type'] = expr_type
+            annotated_node['value'] = ast.get('value', 'Desconocido')
+
+        # Recursión para los hijos
         for child in ast.get('children', []):
             annotated_node['children'].append(annotate_tree(child, symbol_table))
 
@@ -173,6 +223,8 @@ def annotate_tree(ast, symbol_table):
         return [annotate_tree(child, symbol_table) for child in ast]
 
     return ast
+
+
 
 
 def save_annotated_tree(ast, symbol_table, output_file):
@@ -194,10 +246,11 @@ def save_symbol_table(symbol_table, output_file):
             value = info['value'] if info['value'] is not None else 'No asignado'
             file.write(f"{name:<20} | {info['type']:<10} | {value:<10} | {loc:<10} | {line_numbers:<20}\n")
 
-def perform_semantic_analysis(ast, output_annotated_file, output_symbol_table_file, error_callback=None):
+
+def perform_semantic_analysis(ast, output_annotated_file, output_symbol_table_file, line_mapping, error_callback=None):
     symbol_table = SymbolTable()  # Crear una instancia de SymbolTable
     try:
-        semantic_check(ast, symbol_table, error_callback)  # Pasar error_callback aquí
+        semantic_check(ast, symbol_table, error_callback, line_mapping)  # Pasar error_callback aquí
         save_annotated_tree(ast, symbol_table, output_annotated_file)
         save_symbol_table(symbol_table, output_symbol_table_file)
     except Exception as e:

@@ -368,13 +368,18 @@ class EditorCompilador:
 
     def analizador_sem(self):
         try:
-            if not hasattr(self, 'arbol_sintactico'):
-                self.arbol_sintactico = self.load_syntax_tree('arbol.txt')
+            self.arbol_sintactico = self.load_syntax_tree('arbol.txt')
+
+            line_mapping = self.load_line_mapping('analisisSyntax.txt')  # Cargar líneas de 'analisisSyntax.txt'
+            if line_mapping is None:
+                print("No se pudo cargar el archivo de mapeo de líneas.")
+                return
 
             success = semantic.perform_semantic_analysis(
                 self.arbol_sintactico,
                 'arbol_anotado.txt',
                 'tabla_hash.txt',
+                line_mapping,
                 error_callback=self.display_error
             )
             if not success:
@@ -417,6 +422,14 @@ class EditorCompilador:
             return syntax_tree
         except json.JSONDecodeError as e:
             print(f"Error al cargar el árbol sintáctico: {str(e)}")
+            return None
+    
+    def load_line_mapping(self, file_path):
+        try:
+            line_mapping = semantic.load_lines_from_file(file_path)  # Cargar el mapeo de líneas
+            return line_mapping
+        except Exception as e:
+            print(f"Error al cargar el archivo de líneas: {str(e)}")
             return None
         
     def mostrar_tabla_hash(self):

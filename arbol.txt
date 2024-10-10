@@ -39,7 +39,7 @@
       "label": "char",
       "children": [
         {
-          "label": "a",
+          "label": "b",
           "children": []
         }
       ]
@@ -48,7 +48,7 @@
       "label": "float",
       "children": [
         {
-          "label": "b",
+          "label": "e",
           "children": []
         }
       ]
@@ -57,7 +57,7 @@
       "label": "boolean",
       "children": [
         {
-          "label": "x",
+          "label": "f",
           "children": []
         }
       ]
@@ -66,7 +66,7 @@
       "label": "string",
       "children": [
         {
-          "label": "a",
+          "label": "g",
           "children": []
         }
       ]

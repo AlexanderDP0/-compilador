@@ -1,8 +1,11 @@
 Nombre de Variable   | Tipo       | Valor      | Registro   | Números de Línea    
 --------------------------------------------------------------------------------
-x                    | integer    | No asignado | 0          | None                
-y                    | integer    | No asignado | 1          | None                
-z                    | integer    | No asignado | 2          | None                
-a                    | double     | No asignado | 3          | None                
-b                    | double     | No asignado | 4          | None                
-c                    | double     | No asignado | 5          | None                
+x                    | integer    | No asignado | 0          | 44                  
+y                    | integer    | No asignado | 1          | 46                  
+z                    | integer    | No asignado | 2          | 17                  
+a                    | double     | No asignado | 3          | 32                  
+b                    | double     | No asignado | 4          | 28                  
+c                    | double     | No asignado | 5          | 33                  
+e                    | float      | No asignado | 6          | 5                   
+f                    | boolean    | No asignado | 7          | 6                   
+g                    | string     | No asignado | 8          | 7                   
