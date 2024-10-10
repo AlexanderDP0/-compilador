@@ -1,0 +1,761 @@
+{
+  "label": "main",
+  "children": [
+    {
+      "label": "integer",
+      "children": [
+        {
+          "label": "x",
+          "children": []
+        },
+        {
+          "label": "y",
+          "children": []
+        },
+        {
+          "label": "z",
+          "children": []
+        },
+        {
+          "label": "suma",
+          "children": []
+        }
+      ]
+    },
+    {
+      "label": "double",
+      "children": [
+        {
+          "label": "a",
+          "children": []
+        },
+        {
+          "label": "b",
+          "children": []
+        },
+        {
+          "label": "c",
+          "children": []
+        }
+      ]
+    },
+    {
+      "label": "char",
+      "children": [
+        {
+          "label": "a",
+          "children": []
+        }
+      ]
+    },
+    {
+      "label": "float",
+      "children": [
+        {
+          "label": "b",
+          "children": []
+        }
+      ]
+    },
+    {
+      "label": "boolean",
+      "children": [
+        {
+          "label": "x",
+          "children": []
+        }
+      ]
+    },
+    {
+      "label": "string",
+      "children": [
+        {
+          "label": "a",
+          "children": []
+        }
+      ]
+    },
+    [
+      {
+        "label": "=",
+        "children": [
+          "suma",
+          {
+            "label": 45,
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "x",
+          {
+            "label": 32.32,
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "x",
+          {
+            "label": 23,
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "y",
+          {
+            "label": "-",
+            "children": [
+              {
+                "label": "+",
+                "children": [
+                  {
+                    "label": 2,
+                    "children": []
+                  },
+                  {
+                    "label": 3,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "z",
+          {
+            "label": "+",
+            "children": [
+              {
+                "label": "y",
+                "children": []
+              },
+              {
+                "label": 7,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "y",
+          {
+            "label": "+",
+            "children": [
+              {
+                "label": "y",
+                "children": []
+              },
+              {
+                "label": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "a",
+          {
+            "label": "-",
+            "children": [
+              {
+                "label": "+",
+                "children": [
+                  {
+                    "label": "-",
+                    "children": [
+                      {
+                        "label": "+",
+                        "children": [
+                          {
+                            "label": 24.0,
+                            "children": []
+                          },
+                          {
+                            "label": 4,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "label": "*",
+                        "children": [
+                          {
+                            "label": "/",
+                            "children": [
+                              {
+                                "label": 1,
+                                "children": []
+                              },
+                              {
+                                "label": 3,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "label": 2,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": 34,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "x",
+          {
+            "label": "*",
+            "children": [
+              {
+                "label": "-",
+                "children": [
+                  {
+                    "label": 5,
+                    "children": []
+                  },
+                  {
+                    "label": 3,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "/",
+                "children": [
+                  {
+                    "label": 8,
+                    "children": []
+                  },
+                  {
+                    "label": 2,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "y",
+          {
+            "label": "-",
+            "children": [
+              {
+                "label": "-",
+                "children": [
+                  {
+                    "label": "+",
+                    "children": [
+                      {
+                        "label": 5,
+                        "children": []
+                      },
+                      {
+                        "label": 3,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "label": "/",
+                    "children": [
+                      {
+                        "label": "*",
+                        "children": [
+                          {
+                            "label": 2,
+                            "children": []
+                          },
+                          {
+                            "label": 4,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "label": 7,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": 9,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "z",
+          {
+            "label": "+",
+            "children": [
+              {
+                "label": "/",
+                "children": [
+                  {
+                    "label": 8,
+                    "children": []
+                  },
+                  {
+                    "label": 2,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "*",
+                "children": [
+                  {
+                    "label": 15,
+                    "children": []
+                  },
+                  {
+                    "label": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "y",
+          {
+            "label": 14.54,
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "y",
+          {
+            "label": "-",
+            "children": [
+              {
+                "label": 2,
+                "children": []
+              },
+              {
+                "label": 2,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "if",
+        "children": [
+          {
+            "label": ">",
+            "children": [
+              {
+                "label": 2,
+                "children": []
+              },
+              {
+                "label": 3,
+                "children": []
+              }
+            ]
+          },
+          [
+            {
+              "label": "=",
+              "children": [
+                "y",
+                {
+                  "label": "+",
+                  "children": [
+                    {
+                      "label": "a",
+                      "children": []
+                    },
+                    {
+                      "label": 3,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          {
+            "label": "else",
+            "children": [
+              {
+                "label": "if",
+                "children": [
+                  {
+                    "label": "and",
+                    "children": [
+                      {
+                        "label": ">",
+                        "children": [
+                          {
+                            "label": 4,
+                            "children": []
+                          },
+                          {
+                            "label": 2,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "label": "<",
+                        "children": [
+                          {
+                            "label": 4,
+                            "children": []
+                          },
+                          {
+                            "label": 5,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  [
+                    {
+                      "label": "=",
+                      "children": [
+                        "b",
+                        {
+                          "label": 3.2,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "label": "else",
+                    "children": [
+                      {
+                        "label": "=",
+                        "children": [
+                          "b",
+                          {
+                            "label": 5.0,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "=",
+                "children": [
+                  "y",
+                  {
+                    "label": "+",
+                    "children": [
+                      {
+                        "label": "y",
+                        "children": []
+                      },
+                      {
+                        "label": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "a",
+          {
+            "label": "+",
+            "children": [
+              "a",
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "c",
+          {
+            "label": "-",
+            "children": [
+              "c",
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "=",
+        "children": [
+          "x",
+          {
+            "label": "+",
+            "children": [
+              {
+                "label": 3,
+                "children": []
+              },
+              {
+                "label": 4,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "do",
+        "children": [
+          [
+            {
+              "label": "=",
+              "children": [
+                "y",
+                {
+                  "label": "+",
+                  "children": [
+                    {
+                      "label": "*",
+                      "children": [
+                        {
+                          "label": "+",
+                          "children": [
+                            {
+                              "label": "y",
+                              "children": []
+                            },
+                            {
+                              "label": 1,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "label": 2,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": 1,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "while",
+              "children": [
+                {
+                  "label": ">",
+                  "children": [
+                    {
+                      "label": "x",
+                      "children": []
+                    },
+                    {
+                      "label": 7,
+                      "children": []
+                    }
+                  ]
+                },
+                [
+                  {
+                    "label": "=",
+                    "children": [
+                      "x",
+                      {
+                        "label": "+",
+                        "children": [
+                          {
+                            "label": 6,
+                            "children": []
+                          },
+                          {
+                            "label": "/",
+                            "children": [
+                              {
+                                "label": "*",
+                                "children": [
+                                  {
+                                    "label": "/",
+                                    "children": [
+                                      {
+                                        "label": 8,
+                                        "children": []
+                                      },
+                                      {
+                                        "label": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "label": 3,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "cin",
+                    "children": [
+                      "x"
+                    ]
+                  },
+                  {
+                    "label": "=",
+                    "children": [
+                      "mas",
+                      {
+                        "label": "/",
+                        "children": [
+                          {
+                            "label": 36,
+                            "children": []
+                          },
+                          {
+                            "label": 7,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          {
+            "label": "while",
+            "children": [
+              {
+                "label": "==",
+                "children": [
+                  {
+                    "label": "y",
+                    "children": []
+                  },
+                  {
+                    "label": 5,
+                    "children": []
+                  }
+                ]
+              },
+              [
+                {
+                  "label": "==",
+                  "children": [
+                    "x",
+                    {
+                      "label": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "label": "while",
+        "children": [
+          {
+            "label": "==",
+            "children": [
+              {
+                "label": "y",
+                "children": []
+              },
+              {
+                "label": 0,
+                "children": []
+              }
+            ]
+          },
+          [
+            {
+              "label": "cin",
+              "children": [
+                "mas"
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  ]
+}
